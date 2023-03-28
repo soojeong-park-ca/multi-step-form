@@ -1,0 +1,48 @@
+/* 
+  - Mobile: 375px
+  - Desktop: 1440px
+*/
+
+/**********************************************/
+/* MOBILE-FIRST WORKFLOW */
+/* start screen-width: 375px */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --marine-blue: hsl(213, 96%, 18%);
+  --purplish-blue: hsl(243, 100%, 62%);
+  --pastel-blue: hsl(228, 100%, 84%);
+  --light-blue: hsl(206, 94%, 87%);
+  --strawberry-red: hsl(354, 84%, 57%);
+
+  --cool-gray: hsl(231, 11%, 63%);
+  --ligth-gray: hsl(229, 24%, 87%);
+  --magnolia: hsl(217, 100%, 97%);
+  --alabaster: hsl(231, 100%, 99%);
+  --white: hsl(0, 0%, 100%);
+}
+
+html {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1rem;
+}
+
+/**********************************************/
+/*
+  ATTRIBUTE
+  
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style> 
+*/
