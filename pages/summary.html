@@ -22,48 +22,44 @@
   </head>
   <body>
     <nav class="nav">
-      <a href="../personal-info.html" class="nav-btn">1</a>
+      <a href="../index.html" class="nav-btn">1</a>
       <a href="./plan.html" class="nav-btn">2</a>
       <a href="./add-ons.html" class="nav-btn">3</a>
       <a href="./summary.html" class="nav-btn current-page">4</a>
     </nav>
     <main class="main">
-      <h1 class="heading-primary">Personal info</h1>
+      <h1 class="heading-primary">Finishing up</h1>
       <h3 class="heading-secondary">
-        Please provide your name, email address, and phone number.
+        Double-check everything looks OK before confirming.
       </h3>
-      <form class="form">
-        <div class="form-item">
-          <label for="name" class="input-label">Name</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="e.g. Stephen King"
-            class="input"
-          />
+      <div class="summary">
+        <div class="chosen-plan">
+          <div class="plan-info">
+            <p class="plan-name marine-bold">Arcade (Monthly)</p>
+            <a href="./plan.html" class="change-plan cool-gray-text">Change</a>
+          </div>
+          <p class="plan-price marine-bold">$9/mo</p>
         </div>
-        <div class="form-item">
-          <label for="email" class="input-label">Email Address</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="e.g. stephenking@lorem.com"
-            class="input"
-          />
+        <hr />
+        <div class="chosen-add-ons">
+          <div class="add-on">
+            <p class="add-on-name cool-gray-text">Online service</p>
+            <p class="add-on-price">+$1/mo</p>
+          </div>
+          <div class="add-on">
+            <p class="add-on-name cool-gray-text">Larger storage</p>
+            <p class="add-on-price">+$2/mo</p>
+          </div>
         </div>
-        <div class="form-item">
-          <label for="phone" class="input-label">Phone Number</label>
-          <input
-            type="tel"
-            name="phone"
-            placeholder="e.g. +1 234 567 890"
-            class="input"
-          />
-        </div>
-      </form>
+      </div>
+      <div class="total-cost">
+        <p class="cool-gray-text">Total (per month)</p>
+        <span class="total-price">$12/mo</span>
+      </div>
     </main>
 
     <footer class="footer">
+      <a href="./add-ons.html" class="btn-back">Go Back</a>
       <a href="./confirmed.html" class="btn-next">Confirm</a>
     </footer>
 

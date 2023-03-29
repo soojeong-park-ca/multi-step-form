@@ -149,8 +149,23 @@ body {
 }
 
 .input-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   font-size: 0.8rem;
   color: var(--marine-blue);
+}
+
+/* input hint */
+.input-label .input-hint {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  font-weight: var(--bold-weight);
+  color: var(--strawberry-red);
 }
 
 .input {
@@ -163,6 +178,10 @@ body {
   font-weight: var(--medium-weight);
   color: var(--marine-blue);
   text-indent: 15px;
+}
+
+.input.invalid {
+  border: 1px solid var(--strawberry-red);
 }
 
 .input::placeholder {

@@ -22,7 +22,7 @@
   </head>
   <body>
     <nav class="nav">
-      <a href="../personal-info.html" class="nav-btn">1</a>
+      <a href="../index.html" class="nav-btn">1</a>
       <a href="./plan.html" class="nav-btn">2</a>
       <a href="./add-ons.html" class="nav-btn current-page">3</a>
       <a href="./summary.html" class="nav-btn">4</a>
@@ -36,6 +36,48 @@
         <div class="form-item checked">
           <div class="radio-icon-container">
             <img
+              class="radio-icon checked"
+              src="../assets/images/icon-checkmark.svg"
+              alt="check mark"
+            />
+          </div>
+          <input
+            class="input-radio"
+            type="radio"
+            name="addOn"
+            value="online-service"
+            checked
+          />
+          <label for="addOn" class="input-radio-label">
+            <p class="radio-label-name">Online service</p>
+            <p class="radio-label-description">Access to multiplayer games</p>
+            <p class="radio-label-pricing">+$1/mo</p>
+          </label>
+        </div>
+        <div class="form-item checked">
+          <div class="radio-icon-container">
+            <img
+              class="radio-icon checked"
+              src="../assets/images/icon-checkmark.svg"
+              alt="check mark"
+            />
+          </div>
+          <input
+            class="input-radio"
+            type="radio"
+            name="addOn"
+            value="larger-storage"
+            checked
+          />
+          <label for="addOn" class="input-radio-label">
+            <p class="radio-label-name">Larger storage</p>
+            <p class="radio-label-description">Extra 1TB of cloud save</p>
+            <p class="radio-label-pricing">+$2/mo</p>
+          </label>
+        </div>
+        <div class="form-item">
+          <div class="radio-icon-container">
+            <img
               class="radio-icon"
               src="../assets/images/icon-checkmark.svg"
               alt="check mark"
@@ -45,19 +87,19 @@
             class="input-radio"
             type="radio"
             name="addOn"
-            value="arcade"
-            checked
+            value="custom-profile"
           />
           <label for="addOn" class="input-radio-label">
-            <p class="radio-label-name">Online service</p>
-            <p class="radio-label-description">Access to multiplayer games</p>
-            <p class="radio-label-pricing">+$1/mo</p>
+            <p class="radio-label-name">Customizable Profile</p>
+            <p class="radio-label-description">Custom theme on your profile</p>
+            <p class="radio-label-pricing">+$2/mo</p>
           </label>
         </div>
       </form>
     </main>
 
     <footer class="footer">
+      <a href="./plan.html" class="btn-back">Go Back</a>
       <a href="./summary.html" class="btn-next">Next Step</a>
     </footer>
 

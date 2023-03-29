@@ -1,0 +1,104 @@
+/* SUMMARY */
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  background-color: var(--magnolia);
+  border-radius: 8px;
+
+  padding: 20px 15px;
+  margin-top: 20px;
+}
+
+.summary p,
+.summary a {
+  font-size: 0.9rem;
+}
+
+.summary a {
+  font-weight: var(--medium-weight);
+}
+
+.chosen-plan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+hr {
+  border: 0.5px solid var(--light-gray);
+}
+
+.plan-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.marine-bold {
+  font-weight: var(--bold-weight);
+  color: var(--marine-blue);
+}
+
+.chosen-add-ons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.add-on {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-on-price {
+  color: var(--marine-blue);
+}
+
+.cool-gray-text {
+  color: var(--cool-gray);
+}
+
+/* TOTAL COST */
+.total-cost {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px 15px 0 15px;
+  margin-top: 20px;
+}
+
+.total-cost p {
+  font-size: 0.9rem;
+}
+
+.total-price {
+  font-weight: var(--bold-weight);
+  color: var(--purplish-blue);
+}
+
+/* FOOTER */
+.footer {
+  justify-content: space-between;
+}
+
+.btn-back:link,
+.btn-back:visited {
+  display: inline-block;
+
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 0.9rem;
+  font-weight: var(--medium-weight);
+  color: var(--cool-gray);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.btn-back:hover,
+.btn-back:active {
+  color: var(--marine-blue);
+}

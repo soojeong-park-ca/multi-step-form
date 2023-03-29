@@ -27,12 +27,18 @@
 }
 
 .radio-icon {
+  display: none;
+
   width: 20px;
   height: 20px;
   background-color: var(--purplish-blue);
   border-radius: 4px;
 
   padding: 3.5px;
+}
+
+.radio-icon.checked {
+  display: inline-block;
 }
 
 .input-radio {

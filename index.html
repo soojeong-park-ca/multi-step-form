@@ -33,16 +33,23 @@
       </h3>
       <form class="form">
         <div class="form-item">
-          <label for="name" class="input-label">Name</label>
+          <label for="name" class="input-label label-name">
+            <p class="name">Name</p>
+            <p class="input-hint"></p>
+          </label>
           <input
             type="text"
             name="name"
             placeholder="e.g. Stephen King"
             class="input"
+            autofocus
           />
         </div>
         <div class="form-item">
-          <label for="email" class="input-label">Email Address</label>
+          <label for="email" class="input-label label-email">
+            <p class="email">Email address</p>
+            <p class="input-hint"></p>
+          </label>
           <input
             type="email"
             name="email"
@@ -51,7 +58,10 @@
           />
         </div>
         <div class="form-item">
-          <label for="phone" class="input-label">Phone Number</label>
+          <label for="phone" class="input-label label-phone">
+            <p class="phone">Phone number</p>
+            <p class="input-hint"></p>
+          </label>
           <input
             type="tel"
             name="phone"
