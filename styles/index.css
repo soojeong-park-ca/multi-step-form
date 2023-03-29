@@ -1,0 +1,226 @@
+/* 
+  - Mobile: 375px
+  - Desktop: 1440px
+*/
+
+/**********************************************/
+/* MOBILE-FIRST WORKFLOW */
+/* start screen-width: 375px */
+
+/* GENERAL */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* primary heading, input, nav btn hover */
+  --marine-blue: hsl(213, 96%, 18%);
+  /* pricing, next btn hover */
+  --purplish-blue: hsl(243, 100%, 62%);
+  /* main components background */
+  --pastel-blue: hsl(228, 100%, 84%);
+  /* nav hover background */
+  --light-blue: hsl(206, 94%, 87%);
+  /* input field warning */
+  --strawberry-red: hsl(354, 84%, 57%);
+
+  /* secondary heading, placeholder */
+  --cool-gray: hsl(231, 11%, 63%);
+  /* input box border */
+  --light-gray: hsl(229, 24%, 87%);
+
+  /* body background */
+  --magnolia: hsl(217, 100%, 97%);
+  /* nav btn */
+  --alabaster: hsl(231, 100%, 99%);
+  /* main, footer background */
+  --white: hsl(0, 0%, 100%);
+
+  --regular-weight: 400;
+  --medium-weight: 500;
+  --bold-weight: 700;
+}
+
+html {
+  height: 100%;
+
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1rem;
+  font-weight: var(--regular-weight);
+}
+
+body {
+  min-height: 100%;
+
+  background-color: var(--magnolia);
+  background-image: url(../assets/images/bg-sidebar-mobile.svg);
+  background-repeat: no-repeat;
+}
+
+/* NAVIGATION */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  padding-block: 32px;
+}
+
+.nav-btn:link,
+.nav-btn:visited {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 35px;
+  height: 35px;
+  border: 1px solid var(--alabaster);
+  border-radius: 100px;
+
+  text-decoration: none;
+  font-weight: var(--medium-weight);
+  color: var(--alabaster);
+  background-color: transparent;
+
+  transition: all 0.2s;
+}
+
+.nav-btn:hover,
+.nav-btn:active {
+  color: var(--marine-blue);
+  border: 1px solid var(--light-blue);
+  background-color: var(--light-blue);
+}
+
+.nav-btn.current-page {
+  color: var(--marine-blue);
+  border: 1px solid var(--light-blue);
+  background-color: var(--light-blue);
+}
+
+/* MAIN */
+.main {
+  display: flex;
+  flex-direction: column;
+
+  width: 91vw;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.1);
+
+  padding: 35px 25px;
+  margin: 0 auto;
+}
+
+.heading-primary {
+  font-size: 1.5rem;
+  font-weight: var(--bold-weight);
+  color: var(--marine-blue);
+  letter-spacing: 0.5px;
+}
+
+.heading-secondary {
+  font-size: 1.05rem;
+  font-weight: var(--regular-weight);
+  color: var(--cool-gray);
+  line-height: 1.5;
+
+  margin-top: 15px;
+}
+
+/* FORM */
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+
+  margin-top: 20px;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.input-label {
+  font-size: 0.8rem;
+  color: var(--marine-blue);
+}
+
+.input {
+  padding-block: 12px;
+  border: 1px solid var(--light-gray);
+  border-radius: 5px;
+
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: var(--medium-weight);
+  color: var(--marine-blue);
+  text-indent: 15px;
+}
+
+.input::placeholder {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: var(--medium-weight);
+  color: var(--cool-gray);
+}
+
+/* FOOTER */
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  width: 100vw;
+  background-color: var(--white);
+
+  padding: 18px 15px;
+}
+
+.btn-next:link,
+.btn-next:visited {
+  display: inline-block;
+
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 0.9rem;
+  font-weight: var(--medium-weight);
+  color: var(--magnolia);
+  background-color: var(--marine-blue);
+  border-radius: 3px;
+
+  padding: 12px 18px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.btn-next:hover,
+.btn-next:active {
+  background-color: var(--purplish-blue);
+}
+
+/**********************************************/
+/*
+  ATTRIBUTE
+  
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style> 
+*/

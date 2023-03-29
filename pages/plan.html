@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/plan.css" />
+    <title>Multi-step form</title>
+    <script defer src="../script.js"></script>
+  </head>
+  <body>
+    <nav class="nav">
+      <a href="../personal-info.html" class="nav-btn">1</a>
+      <a href="./plan.html" class="nav-btn current-page">2</a>
+      <a href="./add-ons.html" class="nav-btn">3</a>
+      <a href="./summary.html" class="nav-btn">4</a>
+    </nav>
+    <main class="main">
+      <h1 class="heading-primary">Select your plan</h1>
+      <h3 class="heading-secondary">
+        You have the option of monthly or yearly billing.
+      </h3>
+      <form class="form">
+        <div class="form-item checked">
+          <img
+            class="radio-icon"
+            src="../assets/images/icon-arcade.svg"
+            alt="arcade"
+          />
+          <input
+            class="input-radio"
+            type="radio"
+            name="radioArcade"
+            value="arcade"
+            checked
+          />
+          <label for="radioArcade" class="input-radio-label">
+            <p class="radio-label-name">Arcade</p>
+            <p class="radio-label-pricing">$9/mo</p>
+          </label>
+        </div>
+        <div class="form-item">
+          <img
+            class="radio-icon"
+            src="../assets/images/icon-advanced.svg"
+            alt="advanced"
+          />
+          <input
+            class="input-radio"
+            type="radio"
+            name="radioAdvanced"
+            value="advanced"
+          />
+          <label for="radioAdvanced" class="input-radio-label">
+            <p class="radio-label-name">Advanced</p>
+            <p class="radio-label-pricing">$12/mo</p>
+          </label>
+        </div>
+        <div class="form-item">
+          <img
+            class="radio-icon"
+            src="../assets/images/icon-pro.svg"
+            alt="pro"
+          />
+          <input class="input-radio" type="radio" name="radioPro" value="pro" />
+          <label for="radioPro" class="input-radio-label">
+            <p class="radio-label-name">Pro</p>
+            <p class="radio-label-pricing">$15/mo</p>
+          </label>
+        </div>
+      </form>
+      <div class="plan-period">
+        <button class="btn-monthly">Monthly</button>
+        <button class="btn-toggle">
+          <img
+            class="toggle-icon"
+            src="../assets/images/icon-toggle-left.svg"
+            alt="toggle left"
+          />
+        </button>
+        <button class="btn-yearly">Yearly</button>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <a href="../personal-info.html" class="btn-back">Go Back</a>
+      <a href="./add-ons.html" class="btn-next">Next Step</a>
+    </footer>
+
+    <!-- <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div> -->
+  </body>
+</html>

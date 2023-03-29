@@ -1,0 +1,24 @@
+.btn-disabled {
+  pointer-events: none;
+}
+
+.main {
+  align-items: center;
+
+  padding: 80px 20px;
+}
+
+.thank-you-icon {
+  width: 55px;
+}
+
+.heading-primary {
+  margin-top: 23px;
+}
+
+.heading-secondary {
+  font-size: 1rem;
+  text-align: center;
+
+  margin-top: 10px;
+}
