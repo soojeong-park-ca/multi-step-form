@@ -6,17 +6,3 @@ export const htmlPages = [
   { id: "4", pageNum: 4, url: "/pages/summary.html" },
   { id: "5", pageNum: 5, url: "/pages/confirmed.html" },
 ];
-
-const allInputs = document.querySelectorAll(".input");
-
-const userName = document.getElementById("input-name");
-const userEmail = document.getElementById("input-email");
-const userPhone = document.getElementById("input-phone");
-
-const btnNext = document.querySelector(".btn-next");
-
-window.allInputs = allInputs;
-window.userName = userName;
-window.userEmail = userEmail;
-window.userPhone = userPhone;
-window.btnNext = btnNext;

@@ -1,31 +1,14 @@
-// /********* Global *********/
-// const personalInfoData = [];
-
-// const htmlPages = [
-//   { id: "1", pageNum: 1, url: "/index.html" },
-//   { id: "2", pageNum: 2, url: "/pages/plan.html" },
-//   { id: "3", pageNum: 3, url: "/pages/plan.html" },
-//   { id: "4", pageNum: 4, url: "/pages/summary.html" },
-//   { id: "5", pageNum: 5, url: "/pages/confirmed.html" },
-// ];
-
-// const allInputs = document.querySelectorAll(".input");
-
-// const userName = document.getElementById("input-name");
-// const userEmail = document.getElementById("input-email");
-// const userPhone = document.getElementById("input-phone");
-
-// const btnNext = document.querySelector(".btn-next");
-
 import { htmlPages } from "./variables.js";
 
 export const personalInfoData = [];
 
-const allInputs = window.allInputs;
-const userName = window.userName;
-const userEmail = window.userEmail;
-const userPhone = window.userPhone;
-const btnNext = window.btnNext;
+const allInputs = document.querySelectorAll(".input");
+
+const userName = document.getElementById("input-name");
+const userEmail = document.getElementById("input-email");
+const userPhone = document.getElementById("input-phone");
+
+const btnNext = document.querySelector(".btn-next");
 
 // NAV
 const allNavBtns = document.querySelectorAll(".nav-btn");
@@ -39,7 +22,7 @@ allNavBtns.forEach(btn => {
   btn.addEventListener("click", handleNavBtn);
 });
 
-/********* Personal Info Page (index.html) *********/
+/********* Personal Info Page *********/
 function personalInfoPage() {
   // VARIABLES
   const currentPageNum = 1;
@@ -91,9 +74,9 @@ function personalInfoPage() {
   // 2 - Form Validation Check (for after btn click)
   function validateForm() {
     const nameRegex = /^[a-zA-Z ]{2,30}$/; // Only letters and spaces, 2-30 characters
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Email format
-    const phoneRegex = /^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/; // Phone number format
-
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex =
+      /^(\+?\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$|^(\+?\d{1,2}\s)?\d{3}[\s-]?\d{3}[\s-]?\d{4}$/;
     const userNameVal = userName.value.trim();
     const userEmailVal = userEmail.value.trim();
     const userPhoneVal = userPhone.value.trim();
@@ -160,7 +143,7 @@ function personalInfoPage() {
   btnNext.addEventListener("click", validateForm);
 }
 
-/********* Personal Info Page (index.html) *********/
+/********* Select Plan Page *********/
 function selectPlanPage() {}
 
 // CALL FNS
