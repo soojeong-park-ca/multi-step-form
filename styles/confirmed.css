@@ -2,7 +2,8 @@
   pointer-events: none;
 }
 
-.main {
+.confirmed {
+  display: flex;
   align-items: center;
 
   padding: 80px 20px;
@@ -11,7 +12,7 @@
 .thank-you-icon {
   width: 55px;
 }
-
+/* 
 .heading-primary {
   margin-top: 23px;
 }
@@ -21,4 +22,4 @@
   text-align: center;
 
   margin-top: 10px;
-}
+} */

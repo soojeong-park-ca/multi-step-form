@@ -1,14 +1,30 @@
-import { htmlPages } from "./variables.js";
+// import { htmlPages } from "./variables.js";
 
-export const personalInfoData = [];
+/********************************************/
+/********* Page Elements *********/
+const personalInfoForm = document.querySelector(".form-personal-info");
+
+const selectPlanForm = document.querySelector(".form-select-plan");
+const planPeriodSelector = document.querySelector(".plan-period");
+
+const addOnsForm = document.querySelector(".form-add-ons");
+
+const summary = document.querySelector(".summary");
+const totalCost = document.querySelector(".total-cost");
+
+const confirmed = document.querySelector(".confirmed");
+
+/********************************************/
+/********* General *********/
+const personalInfoData = [];
 
 const allInputs = document.querySelectorAll(".input");
-
 const userName = document.getElementById("input-name");
 const userEmail = document.getElementById("input-email");
 const userPhone = document.getElementById("input-phone");
 
 const btnNext = document.querySelector(".btn-next");
+const btnBack = document.querySelector(".btn-back");
 
 // NAV
 const allNavBtns = document.querySelectorAll(".nav-btn");
@@ -22,11 +38,9 @@ allNavBtns.forEach(btn => {
   btn.addEventListener("click", handleNavBtn);
 });
 
+/********************************************/
 /********* Personal Info Page *********/
 function personalInfoPage() {
-  // VARIABLES
-  const currentPageNum = 1;
-
   // FUNCTIONS
   // Saving user data
   function saveUserInfo() {
@@ -132,12 +146,21 @@ function personalInfoPage() {
       // Save form info
       saveUserInfo();
 
+      /*
       // Redirect to next html page
       const nextPageUrl = htmlPages.find(
         page => page.pageNum === currentPageNum + 1
       ).url;
 
       window.location.replace(nextPageUrl);
+      */
+
+      // Hide Personal Info
+      personalInfoForm.classList.add("hidden");
+      // Show Select Plan + Go Back btn
+      selectPlanForm.classList.remove("hidden");
+      planPeriodSelector.classList.remove("hidden");
+      btnBack.classList.remove("hidden-btn");
     }
   }
   btnNext.addEventListener("click", validateForm);

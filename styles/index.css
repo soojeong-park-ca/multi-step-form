@@ -123,7 +123,7 @@ body {
 }
 
 .heading-secondary {
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   font-weight: var(--regular-weight);
   color: var(--cool-gray);
   line-height: 1.5;
@@ -131,6 +131,8 @@ body {
   margin-top: 15px;
 }
 
+/********************************************/
+/********* PERSONAL INFO *********/
 /* FORM */
 .form {
   display: flex;
@@ -204,7 +206,7 @@ body {
 
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 
   width: 100vw;
   background-color: var(--white);
@@ -212,16 +214,20 @@ body {
   padding: 18px 15px;
 }
 
-.btn-next {
+.btn-next,
+.btn-back {
   display: inline-block;
-
   text-decoration: none;
   text-transform: capitalize;
+  font-family: "Ubuntu", sans-serif;
   font-size: 0.9rem;
   font-weight: var(--medium-weight);
+  border: none;
+}
+
+.btn-next {
   color: var(--magnolia);
   background-color: var(--marine-blue);
-  border: none;
   border-radius: 3px;
 
   padding: 12px 18px;
@@ -232,6 +238,29 @@ body {
 .btn-next:hover,
 .btn-next:active {
   background-color: var(--purplish-blue);
+}
+
+.btn-back {
+  color: var(--cool-gray);
+  background-color: transparent;
+  transition: all 0.2s;
+
+  cursor: pointer;
+}
+
+.btn-back:hover,
+.btn-back:active {
+  color: var(--marine-blue);
+}
+
+/********************************************/
+/********* ADD / REMOVE CLASSES *********/
+.hidden {
+  display: none !important;
+}
+
+.hidden-btn {
+  visibility: hidden;
 }
 
 /**********************************************/

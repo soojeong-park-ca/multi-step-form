@@ -16,6 +16,10 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/plan.css" />
+    <link rel="stylesheet" href="./styles/add-ons.css" />
+    <link rel="stylesheet" href="./styles/summary.css" />
+    <link rel="stylesheet" href="./styles/confirmed.css" />
     <title>Multi-step form</title>
     <script defer type="module" src="/scripts/variables.js"></script>
     <script defer type="module" src="/scripts/script.js"></script>
@@ -32,7 +36,8 @@
       <h3 class="heading-secondary">
         Please provide your name, email address, and phone number.
       </h3>
-      <form class="form">
+      <!-- PERSONAL INFO PAGE -->
+      <form class="form form-personal-info">
         <div class="form-item">
           <label for="name" class="input-label label-name">
             <p class="name">Name</p>
@@ -77,9 +82,190 @@
           />
         </div>
       </form>
+      <!-- SELECT PLAN PAGE -->
+      <form class="form form-select-plan hidden">
+        <div class="form-item checked">
+          <img
+            class="radio-icon radio-icon-plan"
+            src="../assets/images/icon-arcade.svg"
+            alt="arcade"
+          />
+          <input
+            class="input-radio"
+            type="radio"
+            name="radioArcade"
+            value="arcade"
+            checked
+          />
+          <label
+            for="radioArcade"
+            class="input-radio-label input-radio-label-plan"
+          >
+            <p class="radio-label-name">Arcade</p>
+            <p class="radio-label-pricing">$9/mo</p>
+          </label>
+        </div>
+        <div class="form-item">
+          <img
+            class="radio-icon radio-icon-plan"
+            src="../assets/images/icon-advanced.svg"
+            alt="advanced"
+          />
+          <input
+            class="input-radio"
+            type="radio"
+            name="radioAdvanced"
+            value="advanced"
+          />
+          <label
+            for="radioAdvanced"
+            class="input-radio-label input-radio-label-plan"
+          >
+            <p class="radio-label-name">Advanced</p>
+            <p class="radio-label-pricing">$12/mo</p>
+          </label>
+        </div>
+        <div class="form-item">
+          <img
+            class="radio-icon radio-icon-plan"
+            src="../assets/images/icon-pro.svg"
+            alt="pro"
+          />
+          <input class="input-radio" type="radio" name="radioPro" value="pro" />
+          <label
+            for="radioPro"
+            class="input-radio-label input-radio-label-plan"
+          >
+            <p class="radio-label-name">Pro</p>
+            <p class="radio-label-pricing">$15/mo</p>
+          </label>
+        </div>
+      </form>
+      <div class="plan-period hidden">
+        <button class="btn-monthly">Monthly</button>
+        <button class="btn-toggle">
+          <img
+            class="toggle-icon"
+            src="../assets/images/icon-toggle-left.svg"
+            alt="toggle left"
+          />
+        </button>
+        <button class="btn-yearly">Yearly</button>
+      </div>
+      <!-- ADD-ONS PAGE -->
+      <form class="form form-add-ons hidden">
+        <div class="form-item checked">
+          <div class="radio-icon-container">
+            <img
+              class="radio-icon radio-icon-add-on checked"
+              src="../assets/images/icon-checkmark.svg"
+              alt="check mark"
+            />
+          </div>
+          <input
+            class="input-radio"
+            type="radio"
+            name="addOn"
+            value="online-service"
+            checked
+          />
+          <label for="addOn" class="input-radio-label input-radio-label-add-on">
+            <p class="radio-label-name radio-label-name-add-on">
+              Online service
+            </p>
+            <p class="radio-label-description">Access to multiplayer games</p>
+            <p class="radio-label-pricing radio-label-pricing-add-on">+$1/mo</p>
+          </label>
+        </div>
+        <div class="form-item checked">
+          <div class="radio-icon-container">
+            <img
+              class="radio-icon radio-icon-add-on checked"
+              src="../assets/images/icon-checkmark.svg"
+              alt="check mark"
+            />
+          </div>
+          <input
+            class="input-radio"
+            type="radio"
+            name="addOn"
+            value="larger-storage"
+            checked
+          />
+          <label for="addOn" class="input-radio-label input-radio-label-add-on">
+            <p class="radio-label-name radio-label-name-add-on">
+              Larger storage
+            </p>
+            <p class="radio-label-description">Extra 1TB of cloud save</p>
+            <p class="radio-label-pricing radio-label-pricing-add-on">+$2/mo</p>
+          </label>
+        </div>
+        <div class="form-item">
+          <div class="radio-icon-container">
+            <img
+              class="radio-icon radio-icon-add-on"
+              src="../assets/images/icon-checkmark.svg"
+              alt="check mark"
+            />
+          </div>
+          <input
+            class="input-radio"
+            type="radio"
+            name="addOn"
+            value="custom-profile"
+          />
+          <label for="addOn" class="input-radio-label input-radio-label-add-on">
+            <p class="radio-label-name radio-label-name-add-on">
+              Customizable Profile
+            </p>
+            <p class="radio-label-description">Custom theme on your profile</p>
+            <p class="radio-label-pricing radio-label-pricing-add-on">+$2/mo</p>
+          </label>
+        </div>
+      </form>
+      <!-- SUMMARY PAGE -->
+      <div class="summary hidden">
+        <div class="chosen-plan">
+          <div class="plan-info">
+            <p class="plan-name marine-bold">Arcade (Monthly)</p>
+            <a href="./plan.html" class="change-plan cool-gray-text">Change</a>
+          </div>
+          <p class="plan-price marine-bold">$9/mo</p>
+        </div>
+        <hr />
+        <div class="chosen-add-ons">
+          <div class="add-on">
+            <p class="add-on-name cool-gray-text">Online service</p>
+            <p class="add-on-price">+$1/mo</p>
+          </div>
+          <div class="add-on">
+            <p class="add-on-name cool-gray-text">Larger storage</p>
+            <p class="add-on-price">+$2/mo</p>
+          </div>
+        </div>
+      </div>
+      <div class="total-cost hidden">
+        <p class="cool-gray-text">Total (per month)</p>
+        <span class="total-price">$12/mo</span>
+      </div>
+      <!-- CONFIRMED PAGE -->
+      <div class="confirmed hidden">
+        <img
+          src="../assets/images/icon-thank-you.svg"
+          alt="confirmed"
+          class="thank-you-icon"
+        />
+        <h1 class="heading-primary">Thank you!</h1>
+        <h3 class="heading-secondary">
+          Thanks for confirming your subscription! We hope you have fun using
+          our platform. If you ever need support, please feel free to email us
+          at support@loremgaming.com.
+        </h3>
+      </div>
     </main>
 
     <footer class="footer">
+      <button class="btn-back hidden-btn">Go Back</button>
       <button class="btn-next">Next Step</button>
     </footer>
 

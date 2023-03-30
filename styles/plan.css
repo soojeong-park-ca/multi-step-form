@@ -1,5 +1,7 @@
+/********************************************/
+/********* SELECT PLAN *********/
 /* FORM */
-.form-item {
+.form-select-plan .form-item {
   flex-direction: row;
   justify-content: flex-start;
   gap: 10px;
@@ -15,7 +17,7 @@
   border: 1px solid var(--purplish-blue);
 }
 
-.radio-icon {
+.radio-icon.radio-icon-plan {
   width: 40px;
 }
 
@@ -25,7 +27,7 @@
   width: 0;
 }
 
-.input-radio-label {
+.input-radio-label.input-radio-label-plan {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -93,7 +95,7 @@
 }
 
 /* FOOTER */
-.footer {
+/* .footer {
   justify-content: space-between;
 }
 
@@ -113,4 +115,4 @@
 .btn-back:hover,
 .btn-back:active {
   color: var(--marine-blue);
-}
+} */
