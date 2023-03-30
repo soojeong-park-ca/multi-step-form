@@ -185,7 +185,7 @@ body {
   background-color: var(--magnolia);
 }
 
-.input.invalid {
+.input.red-border {
   border: 1px solid var(--strawberry-red);
 }
 

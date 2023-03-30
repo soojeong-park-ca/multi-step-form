@@ -1,21 +1,31 @@
-/********* Global *********/
-const personalInfoData = [];
+// /********* Global *********/
+// const personalInfoData = [];
 
-const htmlPages = [
-  { id: "1", pageNum: 1, url: "/index.html" },
-  { id: "2", pageNum: 2, url: "/pages/plan.html" },
-  { id: "3", pageNum: 3, url: "/pages/plan.html" },
-  { id: "4", pageNum: 4, url: "/pages/summary.html" },
-  { id: "5", pageNum: 5, url: "/pages/confirmed.html" },
-];
+// const htmlPages = [
+//   { id: "1", pageNum: 1, url: "/index.html" },
+//   { id: "2", pageNum: 2, url: "/pages/plan.html" },
+//   { id: "3", pageNum: 3, url: "/pages/plan.html" },
+//   { id: "4", pageNum: 4, url: "/pages/summary.html" },
+//   { id: "5", pageNum: 5, url: "/pages/confirmed.html" },
+// ];
 
-const allInputs = document.querySelectorAll(".input");
+// const allInputs = document.querySelectorAll(".input");
 
-const userName = document.getElementById("input-name");
-const userEmail = document.getElementById("input-email");
-const userPhone = document.getElementById("input-phone");
+// const userName = document.getElementById("input-name");
+// const userEmail = document.getElementById("input-email");
+// const userPhone = document.getElementById("input-phone");
 
-const btnNext = document.querySelector(".btn-next");
+// const btnNext = document.querySelector(".btn-next");
+
+import { htmlPages } from "./variables.js";
+
+export const personalInfoData = [];
+
+const allInputs = window.allInputs;
+const userName = window.userName;
+const userEmail = window.userEmail;
+const userPhone = window.userPhone;
+const btnNext = window.btnNext;
 
 // NAV
 const allNavBtns = document.querySelectorAll(".nav-btn");
@@ -43,7 +53,7 @@ function personalInfoPage() {
       userEmail: userEmail.value,
       userPhone: userPhone.value,
     });
-    console.log(personalInfoData);
+    console.log("script: ", personalInfoData);
   }
 
   // Update input value attribute
@@ -54,7 +64,7 @@ function personalInfoPage() {
   }
 
   // Input Validation
-  // 1 - Empty Input Check
+  // 1 - Live Empty Input Check
   function liveEmptyInputCheck(e) {
     const inputHint = e.target
       .closest(".form-item")
@@ -62,10 +72,10 @@ function personalInfoPage() {
       .querySelector(".input-hint");
 
     if (e.target.value.trim().length > 0) {
-      e.target.classList.remove("invalid");
+      e.target.classList.remove("red-border");
       inputHint.textContent = "";
     } else {
-      e.target.classList.add("invalid");
+      e.target.classList.add("red-border");
       inputHint.textContent = "This field is required";
     }
   }
@@ -78,109 +88,80 @@ function personalInfoPage() {
     input.addEventListener("focusout", liveEmptyInputCheck)
   );
 
-  // 2 - Form Validation Check
-  function emptyInputCheck(input, inputHint) {
-    input.classList.add("invalid");
-    input.required = true;
-    inputHint.textContent = "This field is required";
-    input.setCustomValidity("This field is required");
+  // 2 - Form Validation Check (for after btn click)
+  function validateForm() {
+    const nameRegex = /^[a-zA-Z ]{2,30}$/; // Only letters and spaces, 2-30 characters
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Email format
+    const phoneRegex = /^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/; // Phone number format
+
+    const userNameVal = userName.value.trim();
+    const userEmailVal = userEmail.value.trim();
+    const userPhoneVal = userPhone.value.trim();
+
+    const nameHint = document.querySelector(".name-hint");
+    const emailHint = document.querySelector(".email-hint");
+    const phoneHint = document.querySelector(".phone-hint");
+
+    function emptyInput(input, inputHint) {
+      input.classList.add("red-border");
+      inputHint.textContent = "This field is required";
+    }
+
+    function invalidInput(input, inputHint) {
+      input.classList.add("red-border");
+      inputHint.textContent = `Invalid ${input.name}`;
+    }
+
+    function validInput(input, inputHint) {
+      input.classList.remove("red-border");
+      inputHint.textContent = "";
+    }
+
+    if (userNameVal.length === 0) {
+      emptyInput(userName, nameHint);
+    } else if (!nameRegex.test(userNameVal)) {
+      invalidInput(userName, nameHint);
+    } else if (nameRegex.test(userNameVal)) {
+      validInput(userName, nameHint);
+    }
+
+    if (userEmailVal.length === 0) {
+      emptyInput(userEmail, emailHint);
+    } else if (!emailRegex.test(userEmailVal)) {
+      invalidInput(userEmail, emailHint);
+    } else if (emailRegex.test(userEmailVal)) {
+      validInput(userEmail, emailHint);
+    }
+
+    if (userPhoneVal.length === 0) {
+      emptyInput(userPhone, phoneHint);
+    } else if (!phoneRegex.test(userPhoneVal)) {
+      invalidInput(userPhone, phoneHint);
+    } else if (phoneRegex.test(userPhoneVal)) {
+      validInput(userPhone, phoneHint);
+    }
+
+    if (
+      nameRegex.test(userNameVal) &&
+      emailRegex.test(userEmailVal) &&
+      phoneRegex.test(userPhoneVal)
+    ) {
+      // Save form info
+      saveUserInfo();
+
+      // Redirect to next html page
+      const nextPageUrl = htmlPages.find(
+        page => page.pageNum === currentPageNum + 1
+      ).url;
+
+      window.location.replace(nextPageUrl);
+    }
   }
-
-  function formValidationCheck(e) {
-    e.preventDefault();
-
-    allInputs.forEach(input => {
-      const inputHint = input
-        .closest(".form-item")
-        .querySelector(".input-label")
-        .querySelector(".input-hint");
-
-      if (input.name === "name") {
-        const nameValue = input.value.trim();
-
-        if (nameValue.length === 0) {
-          console.log("empty name");
-          emptyInputCheck(input, inputHint);
-        } else if (nameValue.length < 2 || !/^[A-Za-z\s]+$/.test(nameValue)) {
-          console.log("wrong name");
-          input.classList.add("invalid");
-          input.required = true;
-          inputHint.textContent = "Invalid name.";
-          input.setCustomValidity("Invalid name.");
-        } else {
-          console.log("correct name");
-          input.classList.remove("invalid");
-          input.required = false;
-          inputHint.textContent = "";
-          input.setCustomValidity("");
-        }
-      }
-
-      if (input.name === "email") {
-        const emailValue = input.value.trim();
-
-        if (emailValue.length === 0) {
-          console.log("empty email");
-          emptyInputCheck(input, inputHint);
-        } else if (
-          !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailValue)
-        ) {
-          console.log("wrong email");
-          input.classList.add("invalid");
-          input.required = true;
-          inputHint.textContent = "Invalid email address.";
-          input.setCustomValidity("Invalid email address.");
-        } else {
-          console.log("correct email");
-          input.classList.remove("invalid");
-          input.required = false;
-          inputHint.textContent = "";
-          input.setCustomValidity("");
-        }
-      }
-
-      if (input.name === "phone") {
-        const phoneValue = input.value.trim();
-
-        if (phoneValue.length === 0) {
-          console.log("empty phone");
-          emptyInputCheck(input, inputHint);
-        } else if (
-          !/^(\+?\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$|^(\+?\d{1,2}\s)?\d{3}[\s-]?\d{3}[\s-]?\d{4}$/.test(
-            phoneValue
-          )
-        ) {
-          console.log("wrong phone");
-          input.classList.add("invalid");
-          input.required = true;
-          inputHint.textContent = "Invalid phone number.";
-          input.setCustomValidity("Invalid phone number.");
-        } else {
-          console.log("correct phone");
-          input.classList.remove("invalid");
-          input.required = false;
-          inputHint.textContent = "";
-          input.setCustomValidity("");
-
-          // Save form info
-          saveUserInfo();
-
-          // Redirect to next html page
-          const nextPageUrl = htmlPages.find(
-            page => page.pageNum === currentPageNum + 1
-          ).url;
-          console.log(nextPageUrl);
-          window.location.replace(nextPageUrl);
-        }
-      }
-    });
-
-    const allInvalidInputs = document.querySelectorAll(".input.invalid");
-    allInvalidInputs[0]?.focus();
-  }
-
-  btnNext.addEventListener("click", formValidationCheck);
+  btnNext.addEventListener("click", validateForm);
 }
+
+/********* Personal Info Page (index.html) *********/
+function selectPlanPage() {}
 
 // CALL FNS
 personalInfoPage();

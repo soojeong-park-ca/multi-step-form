@@ -17,8 +17,8 @@
     />
     <link rel="stylesheet" href="./styles/index.css" />
     <title>Multi-step form</title>
+    <script defer type="module" src="/scripts/variables.js"></script>
     <script defer type="module" src="/scripts/script.js"></script>
-    <!-- <script defer type="module" src="/scripts/personal-info.js"></script> -->
   </head>
   <body>
     <nav class="nav">
@@ -36,7 +36,7 @@
         <div class="form-item">
           <label for="name" class="input-label label-name">
             <p class="name">Name</p>
-            <p class="input-hint"></p>
+            <p class="input-hint name-hint"></p>
           </label>
           <input
             type="text"
@@ -51,7 +51,7 @@
         <div class="form-item">
           <label for="email" class="input-label label-email">
             <p class="email">Email address</p>
-            <p class="input-hint"></p>
+            <p class="input-hint email-hint"></p>
           </label>
           <input
             type="email"
@@ -65,7 +65,7 @@
         <div class="form-item">
           <label for="phone" class="input-label label-phone">
             <p class="phone">Phone number</p>
-            <p class="input-hint"></p>
+            <p class="input-hint phone-hint"></p>
           </label>
           <input
             type="tel"
