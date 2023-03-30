@@ -17,11 +17,12 @@
     />
     <link rel="stylesheet" href="./styles/index.css" />
     <title>Multi-step form</title>
-    <script defer src="./script.js"></script>
+    <script defer type="module" src="/scripts/script.js"></script>
+    <!-- <script defer type="module" src="/scripts/personal-info.js"></script> -->
   </head>
   <body>
     <nav class="nav">
-      <a href="personal-info.html" class="nav-btn current-page">1</a>
+      <a href="/index.html" class="nav-btn current-page">1</a>
       <a href="/pages/plan.html" class="nav-btn">2</a>
       <a href="/pages/add-ons.html" class="nav-btn">3</a>
       <a href="/pages/summary.html" class="nav-btn">4</a>
@@ -40,7 +41,9 @@
           <input
             type="text"
             name="name"
+            value=""
             placeholder="e.g. Stephen King"
+            id="input-name"
             class="input"
             autofocus
           />
@@ -53,7 +56,9 @@
           <input
             type="email"
             name="email"
+            value=""
             placeholder="e.g. stephenking@lorem.com"
+            id="input-email"
             class="input"
           />
         </div>
@@ -65,7 +70,9 @@
           <input
             type="tel"
             name="phone"
+            value=""
             placeholder="e.g. +1 234 567 890"
+            id="input-phone"
             class="input"
           />
         </div>
@@ -73,7 +80,7 @@
     </main>
 
     <footer class="footer">
-      <a href="/pages/plan.html" class="btn-next">Next Step</a>
+      <button class="btn-next">Next Step</button>
     </footer>
 
     <!-- <div class="attribution">
