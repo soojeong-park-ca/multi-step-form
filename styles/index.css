@@ -69,8 +69,7 @@ body {
   padding-block: 32px;
 }
 
-.nav-btn:link,
-.nav-btn:visited {
+.nav-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,16 +85,17 @@ body {
   background-color: transparent;
 
   transition: all 0.2s;
+  /* cursor: pointer; */
 }
 
-.nav-btn:hover,
+/* .nav-btn:hover,
 .nav-btn:active {
   color: var(--marine-blue);
   border: 1px solid var(--light-blue);
   background-color: var(--light-blue);
-}
+} */
 
-.nav-btn.current-page {
+.current-page {
   color: var(--marine-blue);
   border: 1px solid var(--light-blue);
   background-color: var(--light-blue);

@@ -3,7 +3,7 @@
 }
 
 .confirmed {
-  display: flex;
+  display: none;
   align-items: center;
 
   padding: 80px 20px;
@@ -12,14 +12,14 @@
 .thank-you-icon {
   width: 55px;
 }
-/* 
-.heading-primary {
+
+.confirmed-heading-primary {
   margin-top: 23px;
 }
 
-.heading-secondary {
+.confirmed-heading-secondary {
   font-size: 1rem;
   text-align: center;
 
   margin-top: 10px;
-} */
+}

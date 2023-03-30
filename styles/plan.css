@@ -1,6 +1,24 @@
 /********************************************/
 /********* SELECT PLAN *********/
 /* FORM */
+.form.form-select-plan {
+  margin-top: 0;
+}
+
+#plan-fieldset {
+  border: none;
+}
+
+.form-monthly-plans,
+.form-yearly-plans {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+
+  margin-top: 20px;
+}
+
 .form-select-plan .form-item {
   flex-direction: row;
   justify-content: flex-start;
@@ -10,9 +28,10 @@
   border-radius: 8px;
 
   padding: 15px;
+  cursor: pointer;
 }
 
-.form-item.checked {
+.form-item-plan.checked {
   background-color: var(--magnolia);
   border: 1px solid var(--purplish-blue);
 }
@@ -46,6 +65,11 @@
   color: var(--cool-gray);
 }
 
+.radio-label-benefit {
+  font-size: 0.7rem;
+  color: var(--marine-blue);
+}
+
 /* TOGGLE PRICING */
 .plan-period {
   display: flex;
@@ -60,34 +84,39 @@
   margin-top: 30px;
 }
 
-.plan-period button {
+.btn-period {
   background-color: transparent;
   border: none;
   font-family: "Ubuntu", sans-serif;
   font-size: 0.9rem;
   font-weight: var(--medium-weight);
-  color: var(--cool-gray);
+
+  transition: all 0.2s;
   cursor: pointer;
 }
 
-.btn-monthly:link,
-.btn-monthly:visited,
-.btn-yearly:link,
-.btn-yearly:visited {
-  transition: all 0.2s;
+.btn-period:hover,
+.btn-period:active {
+  color: var(--purplish-blue);
 }
 
-.btn-monthly:hover,
-.btn-monthly:active,
-.btn-yearly:hover,
-.btn-yearly:active {
-  color: var(--purplish-blue);
+.btn-monthly,
+.btn-yearly {
+  color: var(--cool-gray);
+}
+
+.btn-period.chosen-period {
+  color: var(--marine-blue);
 }
 
 .btn-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .toggle-icon {
