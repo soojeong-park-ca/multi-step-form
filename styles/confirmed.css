@@ -2,7 +2,7 @@
   pointer-events: none;
 }
 
-.confirmed {
+#confirmed {
   display: none;
   align-items: center;
 

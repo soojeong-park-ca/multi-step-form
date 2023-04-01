@@ -235,74 +235,123 @@
           <button class="btn-period btn-yearly">Yearly</button>
         </div>
       </div>
+
       <!-- ADD-ONS PAGE -->
-      <form id="add-ons" class="form form-add-ons hidden">
-        <div class="form-item checked">
-          <div class="radio-icon-container">
-            <img
-              class="radio-icon radio-icon-add-on checked"
-              src="../assets/images/icon-checkmark.svg"
-              alt="check mark"
+      <form id="add-ons" class="form-add-ons hidden">
+        <div class="custom-checkbox-container custom-checkbox-monthly">
+          <label class="custom-checkbox checked">
+            <input
+              type="checkbox"
+              id="online-service-monthly"
+              class="checkbox-input"
+              value="online-service-monthly"
+              checked
             />
-          </div>
-          <input
-            class="input-radio"
-            type="radio"
-            name="addOn"
-            value="online-service"
-            checked
-          />
-          <label for="addOn" class="input-radio-label input-radio-label-add-on">
-            <p class="radio-label-name radio-label-name-add-on">
-              Online service
-            </p>
-            <p class="radio-label-description">Access to multiplayer games</p>
-            <p class="radio-label-pricing radio-label-pricing-add-on">+$1/mo</p>
+            <span class="checkmark"></span>
+            <div class="checkbox-text">
+              <div class="checkbox-title">
+                <p class="checkbox-label-name">Online service</p>
+                <p class="checkbox-label-description">
+                  Access to multiplayer games
+                </p>
+              </div>
+              <p class="checkbox-label-pricing">+$1/mo</p>
+            </div>
+          </label>
+          <label class="custom-checkbox checked">
+            <input
+              type="checkbox"
+              id="larger-storage-monthly"
+              class="checkbox-input"
+              value="larger-storage-monthly"
+              checked
+            />
+            <span class="checkmark"></span>
+            <div class="checkbox-text">
+              <div class="checkbox-title">
+                <p class="checkbox-label-name">Larger storage</p>
+                <p class="checkbox-label-description">
+                  Extra 1TB of cloud save
+                </p>
+              </div>
+              <p class="checkbox-label-pricing">+$2/mo</p>
+            </div>
+          </label>
+          <label class="custom-checkbox">
+            <input
+              type="checkbox"
+              id="customizable-profile-monthly"
+              class="checkbox-input"
+              value="customizable-profile-monthly"
+            />
+            <span class="checkmark"></span>
+            <div class="checkbox-text">
+              <div class="checkbox-title">
+                <p class="checkbox-label-name">Customizable profile</p>
+                <p class="checkbox-label-description">
+                  Custom theme on your profile
+                </p>
+              </div>
+              <p class="checkbox-label-pricing">+$2/mo</p>
+            </div>
           </label>
         </div>
-        <div class="form-item checked">
-          <div class="radio-icon-container">
-            <img
-              class="radio-icon radio-icon-add-on checked"
-              src="../assets/images/icon-checkmark.svg"
-              alt="check mark"
+        <div class="custom-checkbox-container custom-checkbox-yearly hidden">
+          <label class="custom-checkbox checked">
+            <input
+              type="checkbox"
+              id="online-service-yearly"
+              class="checkbox-input"
+              value="online-service-yearly"
+              checked
             />
-          </div>
-          <input
-            class="input-radio"
-            type="radio"
-            name="addOn"
-            value="larger-storage"
-            checked
-          />
-          <label for="addOn" class="input-radio-label input-radio-label-add-on">
-            <p class="radio-label-name radio-label-name-add-on">
-              Larger storage
-            </p>
-            <p class="radio-label-description">Extra 1TB of cloud save</p>
-            <p class="radio-label-pricing radio-label-pricing-add-on">+$2/mo</p>
+            <span class="checkmark"></span>
+            <div class="checkbox-text">
+              <div class="checkbox-title">
+                <p class="checkbox-label-name">Online service</p>
+                <p class="checkbox-label-description">
+                  Access to multiplayer games
+                </p>
+              </div>
+              <p class="checkbox-label-pricing">+$10/yr</p>
+            </div>
           </label>
-        </div>
-        <div class="form-item">
-          <div class="radio-icon-container">
-            <img
-              class="radio-icon radio-icon-add-on"
-              src="../assets/images/icon-checkmark.svg"
-              alt="check mark"
+          <label class="custom-checkbox checked">
+            <input
+              type="checkbox"
+              id="larger-storage-yearly"
+              class="checkbox-input"
+              value="larger-storage-yearly"
+              checked
             />
-          </div>
-          <input
-            class="input-radio"
-            type="radio"
-            name="addOn"
-            value="custom-profile"
-          />
-          <label for="addOn" class="input-radio-label input-radio-label-add-on">
-            <p class="radio-label-name radio-label-name-add-on">
-              Customizable Profile
-            </p>
-            <p class="radio-label-description">Custom theme on your profile</p>
-            <p class="radio-label-pricing radio-label-pricing-add-on">+$2/mo</p>
+            <span class="checkmark"></span>
+            <div class="checkbox-text">
+              <div class="checkbox-title">
+                <p class="checkbox-label-name">Larger storage</p>
+                <p class="checkbox-label-description">
+                  Extra 1TB of cloud save
+                </p>
+              </div>
+              <p class="checkbox-label-pricing">+$20/yr</p>
+            </div>
+          </label>
+          <label class="custom-checkbox">
+            <input
+              type="checkbox"
+              id="customizable-profile-yearly"
+              class="checkbox-input"
+              value="customizable-profile-yearly"
+            />
+            <span class="checkmark"></span>
+            <div class="checkbox-text">
+              <div class="checkbox-title">
+                <p class="checkbox-label-name">Customizable profile</p>
+                <p class="checkbox-label-description">
+                  Custom theme on your profile
+                </p>
+              </div>
+              <p class="checkbox-label-pricing">+$20/yr</p>
+            </div>
           </label>
         </div>
       </form>
@@ -336,7 +385,7 @@
         </div>
       </div>
       <!-- CONFIRMED PAGE -->
-      <div id="confirmed" class="confirmed">
+      <div id="confirmed" class="hidden">
         <img
           src="../assets/images/icon-thank-you.svg"
           alt="confirmed"

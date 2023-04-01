@@ -31,7 +31,7 @@
   cursor: pointer;
 }
 
-.form-item-plan.checked {
+.form-item.checked {
   background-color: var(--magnolia);
   border: 1px solid var(--purplish-blue);
 }
