@@ -10,6 +10,32 @@ const confirmed = document.getElementById("confirmed");
 
 /********************************************/
 /********* General *********/
+const pricing = {
+  monthly: {
+    plan: {
+      arcade: "9",
+      advanced: "12",
+      pro: "15",
+    },
+    addOns: {
+      onlineService: "1",
+      largerStorage: "2",
+      customizableProfile: "2",
+    },
+  },
+  yearly: {
+    plan: {
+      arcade: "90",
+      advanced: "120",
+      pro: "150",
+    },
+    addOns: {
+      onlineService: "10",
+      largerStorage: "20",
+      customizableProfile: "20",
+    },
+  },
+};
 const personalInfoData = [];
 /*
   example:
@@ -18,8 +44,8 @@ const personalInfoData = [];
     userName: "Jane Doe",
     userEmail: "jane@doe.com",
     userPhone: "123 123 1234",
-    plan: {planName: "arcade-monthly"},
-    addOns: {onlineService: true, largerStorage: false, customizableProfile: true}
+    plan: "arcade-monthly",
+    addOns: ['online-service-monthly', 'larger-storage-monthly']
   }
 */
 let currentUserInfo = {
@@ -28,7 +54,7 @@ let currentUserInfo = {
   userEmail: "",
   userPhone: "",
   plan: "arcade-monthly",
-  addOns: [],
+  addOns: ["online-service-monthly", "larger storage-monthly"],
 };
 
 const stepTitle = document.querySelector(".heading-primary");
@@ -53,17 +79,6 @@ const userEmail = document.getElementById("input-email");
 const userPhone = document.getElementById("input-phone");
 
 // FUNCTIONS
-/*
-  // Show corresponding element
-  personalInfo.classList.remove("hidden");
-  selectPlan.classList.add("hidden");
-  addOns.classList.add("hidden");
-  summary.classList.add("hidden");
-
-  // Hide Go Back Btn
-  btnBack.classList.add("hidden-btn");
-  */
-
 // Saving user data
 function saveUserInfo() {
   currentUserInfo.userName = userName.value;
@@ -168,22 +183,6 @@ function validateForm() {
     saveUserInfo();
 
     return true;
-    /*
-    // Nav button style change
-    navBtn1.classList.remove("current-page");
-    navBtn3.classList.remove("current-page");
-    navBtn4.classList.remove("current-page");
-    navBtn2.classList.add("current-page");
-
-    // Showing the corresponding page
-    selectPlan.classList.remove("hidden");
-
-    personalInfo.classList.add("hidden");
-    addOns.classList.add("hidden");
-    summary.classList.add("hidden");
-
-    btnBack.classList.remove("hidden-btn");
-    */
   }
   return false;
 }
@@ -215,33 +214,6 @@ function selectPlanPage() {
   console.log(currentUserInfo);
 
   // FUNCTIONS
-  // // Nav button style change
-  // navBtn1.classList.remove("current-page");
-  // navBtn3.classList.remove("current-page");
-  // navBtn4.classList.remove("current-page");
-  // navBtn2.classList.add("current-page");
-
-  // // Showing the corresponding page
-  // selectPlan.classList.remove("hidden");
-
-  // personalInfo.classList.add("hidden");
-  // addOns.classList.add("hidden");
-  // summary.classList.add("hidden");
-
-  // btnBack.classList.remove("hidden-btn");
-
-  // Default plan selected - monthly arcade plan
-  /*
-  let selectedPlan = monthlyPlans.querySelectorAll(".form-item-plan")[0];
-  selectedPlan.classList.add("checked");
-  let selectedPlanInput = selectedPlan.querySelector("input");
-  selectedPlanInput.setAttribute("checked", true);
-  console.log(selectedPlan, selectedPlanInput);
-  currentUserInfo.plan = { planName: selectedPlanInput.value };
-  console.log(currentUserInfo);
-  console.log(personalInfoData);
-  */
-
   // 1 - clicking / unclicking plan item
   // add/remove styles + add/remove checked attribute from radio inputs
   function choosePlan() {
@@ -375,9 +347,40 @@ function addOnsPage() {
 }
 
 /********************************************/
+/********* Summary Page *********/
+function summaryPage() {
+  // when clicking on "change" btn to change plans
+  const allChangePlanBtns = document.querySelectorAll(".change-plan");
+  function goToSelectPlanPage() {
+    // Nav button style change
+    navBtn1.classList.remove("current-page");
+    navBtn3.classList.remove("current-page");
+    navBtn4.classList.remove("current-page");
+    navBtn2.classList.add("current-page");
+
+    // Showing the corresponding page
+    selectPlan.classList.remove("hidden");
+
+    personalInfo.classList.add("hidden");
+    addOns.classList.add("hidden");
+    summary.classList.add("hidden");
+
+    // Change headings
+    stepTitle.textContent = "Select your plan";
+    stepSubtitle.textContent =
+      "You have the option of monthly or yearly billing.";
+  }
+
+  allChangePlanBtns.forEach(btn =>
+    btn.addEventListener("click", goToSelectPlanPage)
+  );
+}
+
+/********************************************/
 /********* CALL PAGE ELEMENT FUNCTIONS *********/
 selectPlanPage();
 addOnsPage();
+summaryPage();
 
 /********************************************/
 /********* Next Step Button *********/
@@ -447,19 +450,16 @@ function nextStep() {
     stepSubtitle.textContent = "Add-ons help enhance your gaming experience.";
   } else if (!addOns.classList.contains("hidden")) {
     // Save chosen add-ons in the currentUserInfo
-    const allCustomCheckboxes = document.querySelectorAll(
-      ".custom-checkbox-container"
-    );
-    const chosenPeriod = Array.from(allCustomCheckboxes).find(
-      item => !item.classList.contains("hidden")
-    );
-    console.log(chosenPeriod);
-    const allChosenAddOns = chosenPeriod.querySelectorAll(
-      ".custom-checkbox.checked"
-    );
-    allChosenAddOns.forEach(chosen => {
-      currentUserInfo.addOns.push(chosen.querySelector("input").value);
-    });
+    const chosenAddOnsPeriod = Array.from(
+      document.querySelectorAll(".custom-checkbox-container")
+    ).find(item => !item.classList.contains("hidden"));
+
+    const initialAddOnEls = Array.from(
+      chosenAddOnsPeriod.querySelectorAll("input")
+    ).filter(item => item.checked);
+
+    const initialAddOns = initialAddOnEls.map(item => item.value);
+    currentUserInfo.addOns = initialAddOns;
     console.log(currentUserInfo);
 
     // Nav button style change
@@ -479,20 +479,173 @@ function nextStep() {
     stepTitle.textContent = "Finishing up";
     stepSubtitle.textContent =
       "Double-check everything looks OK before confirming.";
+
+    // Which summary to display: monthly or yearly
+    if (chosenAddOnsPeriod.classList.contains("custom-checkbox-monthly")) {
+      // MONTHLY
+      document.querySelector(".summary-monthly").classList.remove("hidden");
+      document.querySelector(".summary-yearly").classList.add("hidden");
+    } else if (
+      chosenAddOnsPeriod.classList.contains("custom-checkbox-yearly")
+    ) {
+      // YEARLY
+      document.querySelector(".summary-monthly").classList.add("hidden");
+      document.querySelector(".summary-yearly").classList.remove("hidden");
+    }
+
+    // bring and apply correct data
+
+    // Plan Title
+    const planTitleStr = currentUserInfo.plan.split("-")[0]; // arcade
+    // Plan Period
+    const planPeriodStr = currentUserInfo.plan.split("-")[1]; // monthly
+    // Plan Price
+    const planPriceNum = pricing[planPeriodStr].plan[planTitleStr];
+
+    // AddOns
+    // check if addons exists
+    if (currentUserInfo.addOns.length > 0) {
+      const addOns = currentUserInfo.addOns; // ['online-service-monthly', 'larger-storage-monthly']
+
+      function addOnsToCamelCase(str) {
+        return `${str.split("-")[0]}${str
+          .split("-")[1]
+          .slice(0, 1)
+          .toUpperCase()}${str.split("-")[1].slice(1)}`;
+      }
+      // 'onlineService'
+
+      function addOnsToCapitalized(str) {
+        return `${str.split("-")[0].slice(0, 1).toUpperCase()}${str
+          .split("-")[0]
+          .slice(1)} ${str.split("-")[1].slice(0, 1).toUpperCase()}${str
+          .split("-")[1]
+          .slice(1)}`;
+      }
+      // ['Online Service', 'Larger Storage']
+
+      const textContentArr = addOns.map(addon => {
+        const camelCaseTitle = addOnsToCamelCase(addon);
+        const capitalizedTitle = addOnsToCapitalized(addon);
+        return {
+          addOnTitle: capitalizedTitle,
+          addOnPrice: pricing[planPeriodStr].addOns[camelCaseTitle],
+        };
+      });
+      /* 
+      [
+        {
+          addOnTitle: 'Online Service',
+          addOnPrice: '1'
+        },
+        {
+          addOnTitle: 'Larger Storage',
+          addOnPrice: '2'
+        }
+      ]  
+      */
+      console.log(textContentArr);
+
+      // Display different summary depending on payment term (monthly / yearly)
+      const addOnsPriceNums = textContentArr.map(i => +i.addOnPrice);
+      const totalPriceNum =
+        +planPriceNum + addOnsPriceNums.reduce((acc, cur) => acc + cur, 0);
+
+      // monthly
+      if (planPeriodStr === "monthly") {
+        const planTitle = document.querySelector(
+          ".plan-name-title.plan-name-title-monthly"
+        );
+        const planPrice = document.querySelector(
+          ".plan-price-num.plan-price-num-monthly"
+        );
+        planTitle.textContent = `${planTitleStr
+          .slice(0, 1)
+          .toUpperCase()}${planTitleStr.slice(1)}`; // Arcade
+        planPrice.textContent = planPriceNum;
+
+        const textContent = textContentArr
+          .map(i => {
+            return `
+            <div class="add-on">
+              <p class="add-on-name cool-gray-text">
+                <span class="add-on-name-title">${i.addOnTitle}</span>
+              </p>
+              <p class="add-on-price">
+                +$<span class="add-on-price-num">${i.addOnPrice}</span>/mo
+              </p>
+            </div>
+          `;
+          })
+          .join("");
+
+        const addOnsContainer = document.querySelector(
+          ".chosen-add-ons.chosen-add-ons-monthly"
+        );
+        addOnsContainer.innerHTML = textContent;
+
+        // Total Price
+        const totalPrice = document.querySelector(
+          ".total-price-num.total-price-num-monthly"
+        );
+        totalPrice.textContent = totalPriceNum;
+      } else if (planPeriodStr === "yearly") {
+        const planTitle = document.querySelector(
+          ".plan-name-title.plan-name-title-yearly"
+        );
+        const planPrice = document.querySelector(
+          ".plan-price-num.plan-price-num-yearly"
+        );
+        planTitle.textContent = `${planTitleStr
+          .slice(0, 1)
+          .toUpperCase()}${planTitleStr.slice(1)}`; // Arcade
+        planPrice.textContent = planPriceNum;
+
+        const textContent = textContentArr
+          .map(i => {
+            return `
+          <div class="add-on">
+            <p class="add-on-name cool-gray-text">
+              <span class="add-on-name-title">${i.addOnTitle}</span>
+            </p>
+            <p class="add-on-price">
+              +$<span class="add-on-price-num">${i.addOnPrice}</span>/yr
+            </p>
+          </div>
+        `;
+          })
+          .join("");
+
+        const addOnsContainer = document.querySelector(
+          ".chosen-add-ons.chosen-add-ons-yearly"
+        );
+        addOnsContainer.innerHTML = textContent;
+
+        // Total Price
+        const totalPrice = document.querySelector(
+          ".total-price-num.total-price-num-yearly"
+        );
+        totalPrice.textContent = totalPriceNum;
+      }
+    }
   } else if (!summary.classList.contains("hidden")) {
     // Showing the corresponding page
-
     personalInfo.classList.add("hidden");
     selectPlan.classList.add("hidden");
     addOns.classList.add("hidden");
     summary.classList.add("hidden");
     confirmed.classList.remove("hidden");
 
-    /*
-    Thank you! Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com.
-    */
+    // remove main headings
+    stepTitle.textContent = "";
+    stepSubtitle.textContent = "";
+
+    // remove all btns
+    const footer = document.querySelector(".footer");
+    footer.classList.add("hidden");
   }
 }
+
 // Click the Next Step Button
 btnNext.addEventListener("click", nextStep);
 
@@ -515,6 +668,11 @@ function goBack() {
     selectPlan.classList.add("hidden");
     addOns.classList.add("hidden");
     summary.classList.add("hidden");
+
+    // Change headings
+    stepTitle.textContent = "Personal info";
+    stepSubtitle.textContent =
+      "Please provide your name, email address, and phone number.";
   } else if (!addOns.classList.contains("hidden")) {
     // Nav button style change
     navBtn1.classList.remove("current-page");
@@ -528,12 +686,17 @@ function goBack() {
     personalInfo.classList.add("hidden");
     addOns.classList.add("hidden");
     summary.classList.add("hidden");
+
+    // Change headings
+    stepTitle.textContent = "Select your plan";
+    stepSubtitle.textContent =
+      "You have the option of monthly or yearly billing.";
   } else if (!summary.classList.contains("hidden")) {
     // Nav button style change
     navBtn1.classList.remove("current-page");
-    navBtn3.classList.remove("current-page");
+    navBtn2.classList.remove("current-page");
     navBtn4.classList.remove("current-page");
-    navBtn2.classList.add("current-page");
+    navBtn3.classList.add("current-page");
 
     // Showing the corresponding page
     addOns.classList.remove("hidden");
@@ -542,18 +705,11 @@ function goBack() {
     selectPlan.classList.add("hidden");
     summary.classList.add("hidden");
     confirmed.classList.add("hidden");
+
+    // Change headings
+    stepTitle.textContent = "Pick add-ons";
+    stepSubtitle.textContent = "Add-ons help enhance your gaming experience.";
   }
 }
 // Click the Go Back Button
 btnBack.addEventListener("click", goBack);
-
-/*
-  // Go Back Button
-  btnBack.addEventListener("click", function () {
-    // Hide Select Plan + Go Back btn
-    selectPlan.classList.add("hidden");
-    btnBack.classList.add("hidden-btn");
-    // Show Personal Info
-    personalInfo.classList.remove("hidden");
-  });
-*/

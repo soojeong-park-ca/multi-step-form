@@ -1,12 +1,9 @@
-.btn-disabled {
-  pointer-events: none;
-}
-
 #confirmed {
-  display: none;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 
-  padding: 80px 20px;
+  padding-block: 40px 45px;
 }
 
 .thank-you-icon {
@@ -14,12 +11,25 @@
 }
 
 .confirmed-heading-primary {
+  color: var(--marine-blue);
   margin-top: 23px;
 }
 
 .confirmed-heading-secondary {
   font-size: 1rem;
+  font-weight: var(--regular-weight);
   text-align: center;
+  line-height: 1.6;
+  color: var(--cool-gray);
 
   margin-top: 10px;
+}
+
+/* change index */
+.main {
+  padding-inline: 20px;
+}
+
+.heading-secondary {
+  margin: 0;
 }

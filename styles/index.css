@@ -264,16 +264,27 @@ body {
 }
 
 /**********************************************/
-/*
-  ATTRIBUTE
-  
-    <style>
-      .attribution {
-        font-size: 11px;
-        text-align: center;
-      }
-      .attribution a {
-        color: hsl(228, 45%, 44%);
-      }
-    </style> 
-*/
+
+.attribution {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  text-align: center;
+  color: var(--cool-gray);
+
+  margin-top: 5px;
+}
+.attribution a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(62, 82, 163);
+
+  text-decoration: none;
+}
+
+.twitter-icon {
+  width: 15px;
+  height: 15px;
+}
