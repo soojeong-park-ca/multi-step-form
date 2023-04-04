@@ -76,7 +76,7 @@ function saveUserInfo() {
   currentUserInfo.userEmail = userEmail.value;
   currentUserInfo.userPhone = userPhone.value;
 
-  console.log("Personal Info Page: ", currentUserInfo);
+  console.log("After saving user info: ", currentUserInfo);
 }
 
 // Update input value attribute so the input values stay on page
@@ -196,24 +196,14 @@ function selectPlanPage() {
   const btnYearly = document.querySelector(".btn-yearly");
   const btnTogglePlans = document.querySelector(".btn-toggle");
 
-  // Default plan selected - monthly arcade plan
+  // Default plan selected - "arcade-monthly"
   let selectedPlan = document.querySelector(`.${currentUserInfo.plan}`);
   let selectedPlanInput = selectedPlan.querySelector("input");
 
-  allPlanItems.forEach(item => {
-    item.classList.remove("checked");
-    item.querySelector("input").setAttribute("checked", false);
-  });
-  selectedPlan.classList.add("checked");
-  selectedPlanInput.setAttribute("checked", true);
-  currentUserInfo.plan = selectedPlanInput.value;
-
-  console.log(currentUserInfo);
-
   // FUNCTIONS
   // 1 - clicking / unclicking plan item
-  // add/remove styles + add/remove checked attribute from radio inputs
   function choosePlan() {
+    // remove "checked" classs + set checked=false to selected radio input
     allPlanItems.forEach(item => {
       item.classList.remove("checked");
       item.querySelector("input").setAttribute("checked", false);
@@ -222,18 +212,18 @@ function selectPlanPage() {
     // update selected plan
     selectedPlan = this;
     selectedPlanInput = this.querySelector("input");
-
+    // add "checked" classs + set checked=true to selected radio input
     this.classList.add("checked");
     selectedPlanInput.setAttribute("checked", true);
 
-    // find current user data and update the plan
+    // update the plan on current user data
     currentUserInfo.plan = selectedPlanInput.value;
-    console.log(currentUserInfo);
+    console.log("after choosing plan: ", currentUserInfo);
   }
-
+  // all plan items listen for click event
   allPlanItems.forEach(item => item.addEventListener("click", choosePlan));
 
-  // 3 - Toggle Display - Monthly or Yearly
+  // 3 - Toggle Display: Monthly or Yearly
   // display Monthly plans
   function displayMonthlyPlans() {
     // buttons appearance
@@ -252,7 +242,7 @@ function selectPlanPage() {
     });
     currentUserInfo.plan = "";
 
-    //- choose first plan from monthly plans
+    //- choose first plan from monthly plans and add 'checked'
     monthlyPlans
       .querySelectorAll(".form-item-plan")[0]
       .querySelector("input")
@@ -265,7 +255,7 @@ function selectPlanPage() {
     currentUserInfo.plan = monthlyPlans
       .querySelectorAll(".form-item-plan")[0]
       .querySelector("input").value;
-    console.log(currentUserInfo);
+    console.log("Switching to monthly plans: ", currentUserInfo);
 
     // hide yearly plans and show monthly plans
     yearlyPlans.classList.add("hidden");
@@ -302,7 +292,7 @@ function selectPlanPage() {
     currentUserInfo.plan = yearlyPlans
       .querySelectorAll(".form-item")[0]
       .querySelector("input").value;
-    console.log(currentUserInfo);
+    console.log("Switching to yearly plans: ", currentUserInfo);
 
     // hide monthly plans and show yearly plans
     monthlyPlans.classList.add("hidden");
@@ -314,11 +304,13 @@ function selectPlanPage() {
   // toggle plans
   function togglePlans() {
     if (
+      // yearly => monthly
       btnTogglePlans.querySelector("img").getAttribute("src") ===
       "../assets/images/icon-toggle-left.svg"
     ) {
       displayYearlyPlans();
     } else if (
+      // monthly => yearly
       btnTogglePlans.querySelector("img").getAttribute("src") ===
       "../assets/images/icon-toggle-right.svg"
     ) {
