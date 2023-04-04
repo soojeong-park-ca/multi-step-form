@@ -1,7 +1,5 @@
-// import { htmlPages } from "./variables.js";
-
 /********************************************/
-/********* Page Elements *********/
+/********* Page Element Functions *********/
 const personalInfo = document.getElementById("personal-info");
 const selectPlan = document.getElementById("select-plan");
 const addOns = document.getElementById("add-ons");
@@ -10,6 +8,7 @@ const confirmed = document.getElementById("confirmed");
 
 /********************************************/
 /********* General *********/
+// Product pricing info
 const pricing = {
   monthly: {
     plan: {
@@ -36,18 +35,11 @@ const pricing = {
     },
   },
 };
+
+// ❗️ all saved user data
 const personalInfoData = [];
-/*
-  example:
-  {
-    id: crypto.randomUUID(),
-    userName: "Jane Doe",
-    userEmail: "jane@doe.com",
-    userPhone: "123 123 1234",
-    plan: "arcade-monthly",
-    addOns: ['online-service-monthly', 'larger-storage-monthly']
-  }
-*/
+
+// initial current user data
 let currentUserInfo = {
   id: crypto.randomUUID(),
   userName: "",
@@ -70,8 +62,7 @@ const btnNext = document.querySelector(".btn-next");
 const btnBack = document.querySelector(".btn-back");
 
 /********************************************/
-/********* Personal Info Page *********/
-// function personalInfoPage() {}
+/********* STEP 1: Personal Info *********/
 // VARIABLES
 const allInputs = document.querySelectorAll(".input");
 const userName = document.getElementById("input-name");
@@ -88,7 +79,7 @@ function saveUserInfo() {
   console.log("Personal Info Page: ", currentUserInfo);
 }
 
-// Update input value attribute so the values stay in place
+// Update input value attribute so the input values stay on page
 function updateInputValue() {
   userName.setAttribute("value", userName.value);
   userEmail.setAttribute("value", userEmail.value);
@@ -96,7 +87,7 @@ function updateInputValue() {
 }
 
 // Input Validation
-// 1 - Live Empty Input Check
+// 1 - Real-time empty input check
 function liveEmptyInputCheck(e) {
   const inputHint = e.target
     .closest(".form-item")
@@ -112,20 +103,23 @@ function liveEmptyInputCheck(e) {
   }
 }
 
+// when the user types
 allInputs.forEach(input => {
   input.addEventListener("input", updateInputValue);
   input.addEventListener("input", liveEmptyInputCheck);
 });
+// when the user focuses out
 allInputs.forEach(input =>
   input.addEventListener("focusout", liveEmptyInputCheck)
 );
 
 // 2 - Form Validation Check (for after btn click)
 function validateForm() {
-  const nameRegex = /^[a-zA-Z ]{2,30}$/; // Only letters and spaces, 2-30 characters
+  const nameRegex = /^[a-zA-Z ]{2,30}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex =
     /^(\+?\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$|^(\+?\d{1,2}\s)?\d{3}[\s-]?\d{3}[\s-]?\d{4}$/;
+
   const userNameVal = userName.value.trim();
   const userEmailVal = userEmail.value.trim();
   const userPhoneVal = userPhone.value.trim();
@@ -134,22 +128,24 @@ function validateForm() {
   const emailHint = document.querySelector(".email-hint");
   const phoneHint = document.querySelector(".phone-hint");
 
+  // add red border + hint for empty input
   function emptyInput(input, inputHint) {
     input.classList.add("red-border");
     inputHint.textContent = "This field is required";
   }
-
+  // add red border + hint for invalid input
   function invalidInput(input, inputHint) {
     input.classList.add("red-border");
     inputHint.textContent = `Invalid ${input.name}`;
   }
-
+  // remove red border + hint for valid input
   function validInput(input, inputHint) {
     input.classList.remove("red-border");
     inputHint.textContent = "";
   }
 
-  // Display hint, + border
+  // Display hint + border
+  // Name input
   if (userNameVal.length === 0) {
     emptyInput(userName, nameHint);
   } else if (!nameRegex.test(userNameVal)) {
@@ -157,7 +153,7 @@ function validateForm() {
   } else if (nameRegex.test(userNameVal)) {
     validInput(userName, nameHint);
   }
-
+  // Email input
   if (userEmailVal.length === 0) {
     emptyInput(userEmail, emailHint);
   } else if (!emailRegex.test(userEmailVal)) {
@@ -165,7 +161,7 @@ function validateForm() {
   } else if (emailRegex.test(userEmailVal)) {
     validInput(userEmail, emailHint);
   }
-
+  // Phone input
   if (userPhoneVal.length === 0) {
     emptyInput(userPhone, phoneHint);
   } else if (!phoneRegex.test(userPhoneVal)) {
@@ -174,6 +170,7 @@ function validateForm() {
     validInput(userPhone, phoneHint);
   }
 
+  // When name, email, phone inputs are all valid
   if (
     nameRegex.test(userNameVal) &&
     emailRegex.test(userEmailVal) &&
@@ -188,7 +185,7 @@ function validateForm() {
 }
 
 /********************************************/
-/********* Select Plan Page *********/
+/********* STEP 2: Select Plan *********/
 function selectPlanPage() {
   // VARIABLES
   const allPlanItems = document.querySelectorAll(".form-item-plan");

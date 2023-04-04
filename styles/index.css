@@ -38,6 +38,7 @@
   /* main, footer background */
   --white: hsl(0, 0%, 100%);
 
+  /* font weight */
   --regular-weight: 400;
   --medium-weight: 500;
   --bold-weight: 700;
@@ -85,15 +86,7 @@ body {
   background-color: transparent;
 
   transition: all 0.2s;
-  /* cursor: pointer; */
 }
-
-/* .nav-btn:hover,
-.nav-btn:active {
-  color: var(--marine-blue);
-  border: 1px solid var(--light-blue);
-  background-color: var(--light-blue);
-} */
 
 .current-page {
   color: var(--marine-blue);
@@ -264,7 +257,7 @@ body {
 }
 
 /**********************************************/
-
+/********* ATTRIBUTION *********/
 .attribution {
   display: flex;
   align-items: center;
@@ -282,9 +275,4 @@ body {
   color: rgb(62, 82, 163);
 
   text-decoration: none;
-}
-
-.twitter-icon {
-  width: 15px;
-  height: 15px;
 }
