@@ -1,7 +1,7 @@
 /********************************************/
 /********* SELECT PLAN *********/
 /* FORM */
-.form.form-select-plan {
+.form.form__select-plan {
   margin-top: 0;
 }
 
@@ -9,8 +9,8 @@
   border: none;
 }
 
-.form-monthly-plans,
-.form-yearly-plans {
+.form__select-plan--monthly,
+.form__select-plan--yearly {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +19,7 @@
   margin-top: 20px;
 }
 
-.form-select-plan .form-item {
+.form__select-plan .form__item {
   flex-direction: row;
   justify-content: flex-start;
   gap: 10px;
@@ -31,7 +31,7 @@
   cursor: pointer;
 }
 
-.form-item.checked {
+.form__item.checked {
   background-color: var(--magnolia);
   border: 1px solid var(--purplish-blue);
 }
@@ -46,7 +46,7 @@
   width: 0;
 }
 
-.input-radio-label {
+.input-radio__label {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -54,18 +54,18 @@
   gap: 4px;
 }
 
-.radio-label-name {
+.input-radio__label--name {
   font-weight: var(--medium-weight);
   color: var(--marine-blue);
 }
 
-.radio-label-pricing {
+.input-radio__label--pricing {
   font-size: 0.9rem;
   font-weight: var(--medium-weight);
   color: var(--cool-gray);
 }
 
-.radio-label-benefit {
+.input-radio__label--benefit {
   font-size: 0.7rem;
   color: var(--marine-blue);
 }
@@ -84,7 +84,7 @@
   margin-top: 30px;
 }
 
-.btn-period {
+.btn--period {
   background-color: transparent;
   border: none;
   font-family: "Ubuntu", sans-serif;
@@ -95,21 +95,21 @@
   cursor: pointer;
 }
 
-.btn-period:hover,
-.btn-period:active {
+.btn--period:hover,
+.btn--period:active {
   color: var(--purplish-blue);
 }
 
-.btn-monthly,
-.btn-yearly {
+.btn--monthly,
+.btn--yearly {
   color: var(--cool-gray);
 }
 
-.btn-period.chosen-period {
+.btn--period.chosen-period {
   color: var(--marine-blue);
 }
 
-.btn-toggle {
+.btn--toggle {
   display: flex;
   align-items: center;
   justify-content: center;

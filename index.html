@@ -25,10 +25,10 @@
   </head>
   <body>
     <nav class="nav">
-      <button class="nav-btn nav-btn-1 current-page">1</button>
-      <button class="nav-btn nav-btn-2">2</button>
-      <button class="nav-btn nav-btn-3">3</button>
-      <button class="nav-btn nav-btn-4">4</button>
+      <button class="btn--nav btn--nav-1 current-page">1</button>
+      <button class="btn--nav btn--nav-2">2</button>
+      <button class="btn--nav btn--nav-3">3</button>
+      <button class="btn--nav btn--nav-4">4</button>
     </nav>
     <main class="main">
       <h1 class="heading-primary">Personal info</h1>
@@ -38,10 +38,10 @@
 
       <!-- PERSONAL INFO PAGE -->
       <form id="personal-info" class="form">
-        <div class="form-item">
-          <label for="name" class="input-label">
+        <div class="form__item">
+          <label for="name" class="input__label">
             <p>Name</p>
-            <p class="input-hint name-hint"></p>
+            <p class="input__hint input__hint--name"></p>
           </label>
           <input
             type="text"
@@ -53,10 +53,10 @@
             autofocus
           />
         </div>
-        <div class="form-item">
-          <label for="email" class="input-label">
+        <div class="form__item">
+          <label for="email" class="input__label">
             <p>Email address</p>
-            <p class="input-hint email-hint"></p>
+            <p class="input__hint input__hint--email"></p>
           </label>
           <input
             type="email"
@@ -67,10 +67,10 @@
             class="input"
           />
         </div>
-        <div class="form-item">
-          <label for="phone" class="input-label">
+        <div class="form__item">
+          <label for="phone" class="input__label">
             <p>Phone number</p>
-            <p class="input-hint phone-hint"></p>
+            <p class="input__hint input__hint--phone"></p>
           </label>
           <input
             type="tel"
@@ -85,10 +85,10 @@
 
       <!-- SELECT PLAN PAGE -->
       <div id="select-plan" class="hidden">
-        <form class="form form-select-plan">
+        <form class="form form__select-plan">
           <fieldset id="plan-fieldset" required>
-            <div class="form-monthly-plans">
-              <div class="form-item form-item-plan arcade-monthly checked">
+            <div class="form__select-plan--monthly">
+              <div class="form__item form__item--plan arcade-monthly checked">
                 <img
                   class="radio-icon"
                   src="../assets/images/icon-arcade.svg"
@@ -102,12 +102,12 @@
                   value="arcade-monthly"
                   checked
                 />
-                <label for="arcade-monthly" class="input-radio-label">
-                  <p class="radio-label-name">Arcade</p>
-                  <p class="radio-label-pricing">$9/mo</p>
+                <label for="arcade-monthly" class="input-radio__label">
+                  <p class="input-radio__label--name">Arcade</p>
+                  <p class="input-radio__label--pricing">$9/mo</p>
                 </label>
               </div>
-              <div class="form-item form-item-plan advanced-monthly">
+              <div class="form__item form__item--plan advanced-monthly">
                 <img
                   class="radio-icon"
                   src="../assets/images/icon-advanced.svg"
@@ -120,12 +120,12 @@
                   name="plan"
                   value="advanced-monthly"
                 />
-                <label for="advanced-monthly" class="input-radio-label">
-                  <p class="radio-label-name">Advanced</p>
-                  <p class="radio-label-pricing">$12/mo</p>
+                <label for="advanced-monthly" class="input-radio__label">
+                  <p class="input-radio__label--name">Advanced</p>
+                  <p class="input-radio__label--pricing">$12/mo</p>
                 </label>
               </div>
-              <div class="form-item form-item-plan pro-monthly">
+              <div class="form__item form__item--plan pro-monthly">
                 <img
                   class="radio-icon"
                   src="../assets/images/icon-pro.svg"
@@ -138,15 +138,15 @@
                   name="plan"
                   value="pro-monthly"
                 />
-                <label for="pro-monthly" class="input-radio-label">
-                  <p class="radio-label-name">Pro</p>
-                  <p class="radio-label-pricing">$15/mo</p>
+                <label for="pro-monthly" class="input-radio__label">
+                  <p class="input-radio__label--name">Pro</p>
+                  <p class="input-radio__label--pricing">$15/mo</p>
                 </label>
               </div>
             </div>
 
-            <div class="form-yearly-plans hidden">
-              <div class="form-item form-item-plan arcade-yearly">
+            <div class="form__select-plan--yearly hidden">
+              <div class="form__item form__item--plan arcade-yearly">
                 <img
                   class="radio-icon"
                   src="../assets/images/icon-arcade.svg"
@@ -159,13 +159,13 @@
                   name="plan"
                   value="arcade-yearly"
                 />
-                <label for="arcade-yearly" class="input-radio-label">
-                  <p class="radio-label-name">Arcade</p>
-                  <p class="radio-label-pricing">$90/yr</p>
-                  <p class="radio-label-benefit">2 months free</p>
+                <label for="arcade-yearly" class="input-radio__label">
+                  <p class="input-radio__label--name">Arcade</p>
+                  <p class="input-radio__label--pricing">$90/yr</p>
+                  <p class="input-radio__label--benefit">2 months free</p>
                 </label>
               </div>
-              <div class="form-item form-item-plan advanced-yearly">
+              <div class="form__item form__item--plan advanced-yearly">
                 <img
                   class="radio-icon"
                   src="../assets/images/icon-advanced.svg"
@@ -178,13 +178,13 @@
                   name="plan"
                   value="advanced-yearly"
                 />
-                <label for="advanced-yearly" class="input-radio-label">
-                  <p class="radio-label-name">Advanced</p>
-                  <p class="radio-label-pricing">$120/yr</p>
-                  <p class="radio-label-benefit">2 months free</p>
+                <label for="advanced-yearly" class="input-radio__label">
+                  <p class="input-radio__label--name">Advanced</p>
+                  <p class="input-radio__label--pricing">$120/yr</p>
+                  <p class="input-radio__label--benefit">2 months free</p>
                 </label>
               </div>
-              <div class="form-item form-item-plan pro-yearly">
+              <div class="form__item form__item--plan pro-yearly">
                 <img
                   class="radio-icon"
                   src="../assets/images/icon-pro.svg"
@@ -197,31 +197,33 @@
                   name="plan"
                   value="pro-yearly"
                 />
-                <label for="pro-yearly" class="input-radio-label">
-                  <p class="radio-label-name">Pro</p>
-                  <p class="radio-label-pricing">$150/yr</p>
-                  <p class="radio-label-benefit">2 months free</p>
+                <label for="pro-yearly" class="input-radio__label">
+                  <p class="input-radio__label--name">Pro</p>
+                  <p class="input-radio__label--pricing">$150/yr</p>
+                  <p class="input-radio__label--benefit">2 months free</p>
                 </label>
               </div>
             </div>
           </fieldset>
         </form>
         <div class="plan-period">
-          <button class="btn-period btn-monthly chosen-period">Monthly</button>
-          <button class="btn-toggle">
+          <button class="btn--period btn--monthly chosen-period">
+            Monthly
+          </button>
+          <button class="btn--toggle">
             <img
               class="toggle-icon"
               src="../assets/images/icon-toggle-left.svg"
               alt="toggle left"
             />
           </button>
-          <button class="btn-period btn-yearly">Yearly</button>
+          <button class="btn--period btn--yearly">Yearly</button>
         </div>
       </div>
 
       <!-- ADD-ONS PAGE -->
-      <form id="add-ons" class="form-add-ons hidden">
-        <div class="custom-checkbox-container custom-checkbox-monthly">
+      <form id="add-ons" class="form__add-ons hidden">
+        <div class="custom-checkbox__container custom-checkbox--monthly">
           <label class="custom-checkbox checked">
             <input
               type="checkbox"
@@ -231,14 +233,14 @@
               checked
             />
             <span class="checkmark"></span>
-            <div class="checkbox-text">
-              <div class="checkbox-title">
-                <p class="checkbox-label-name">Online service</p>
-                <p class="checkbox-label-description">
+            <div class="custom-checkbox__text">
+              <div class="custom-checkbox__title">
+                <p class="custom-checkbox__label-name">Online service</p>
+                <p class="custom-checkbox__label-description">
                   Access to multiplayer games
                 </p>
               </div>
-              <p class="checkbox-label-pricing">+$1/mo</p>
+              <p class="custom-checkbox__label-pricing">+$1/mo</p>
             </div>
           </label>
           <label class="custom-checkbox checked">
@@ -250,14 +252,14 @@
               checked
             />
             <span class="checkmark"></span>
-            <div class="checkbox-text">
-              <div class="checkbox-title">
-                <p class="checkbox-label-name">Larger storage</p>
-                <p class="checkbox-label-description">
+            <div class="custom-checkbox__text">
+              <div class="custom-checkbox__title">
+                <p class="custom-checkbox__label-name">Larger storage</p>
+                <p class="custom-checkbox__label-description">
                   Extra 1TB of cloud save
                 </p>
               </div>
-              <p class="checkbox-label-pricing">+$2/mo</p>
+              <p class="custom-checkbox__label-pricing">+$2/mo</p>
             </div>
           </label>
           <label class="custom-checkbox">
@@ -268,18 +270,18 @@
               value="customizable-profile-monthly"
             />
             <span class="checkmark"></span>
-            <div class="checkbox-text">
-              <div class="checkbox-title">
-                <p class="checkbox-label-name">Customizable profile</p>
-                <p class="checkbox-label-description">
+            <div class="custom-checkbox__text">
+              <div class="custom-checkbox__title">
+                <p class="custom-checkbox__label-name">Customizable profile</p>
+                <p class="custom-checkbox__label-description">
                   Custom theme on your profile
                 </p>
               </div>
-              <p class="checkbox-label-pricing">+$2/mo</p>
+              <p class="custom-checkbox__label-pricing">+$2/mo</p>
             </div>
           </label>
         </div>
-        <div class="custom-checkbox-container custom-checkbox-yearly hidden">
+        <div class="custom-checkbox__container custom-checkbox--yearly hidden">
           <label class="custom-checkbox checked">
             <input
               type="checkbox"
@@ -289,14 +291,14 @@
               checked
             />
             <span class="checkmark"></span>
-            <div class="checkbox-text">
-              <div class="checkbox-title">
-                <p class="checkbox-label-name">Online service</p>
-                <p class="checkbox-label-description">
+            <div class="custom-checkbox__text">
+              <div class="custom-checkbox__title">
+                <p class="custom-checkbox__label-name">Online service</p>
+                <p class="custom-checkbox__label-description">
                   Access to multiplayer games
                 </p>
               </div>
-              <p class="checkbox-label-pricing">+$10/yr</p>
+              <p class="custom-checkbox__label-pricing">+$10/yr</p>
             </div>
           </label>
           <label class="custom-checkbox checked">
@@ -308,14 +310,14 @@
               checked
             />
             <span class="checkmark"></span>
-            <div class="checkbox-text">
-              <div class="checkbox-title">
-                <p class="checkbox-label-name">Larger storage</p>
-                <p class="checkbox-label-description">
+            <div class="custom-checkbox__text">
+              <div class="custom-checkbox__title">
+                <p class="custom-checkbox__label-name">Larger storage</p>
+                <p class="custom-checkbox__label-description">
                   Extra 1TB of cloud save
                 </p>
               </div>
-              <p class="checkbox-label-pricing">+$20/yr</p>
+              <p class="custom-checkbox__label-pricing">+$20/yr</p>
             </div>
           </label>
           <label class="custom-checkbox">
@@ -326,14 +328,14 @@
               value="customizable-profile-yearly"
             />
             <span class="checkmark"></span>
-            <div class="checkbox-text">
-              <div class="checkbox-title">
-                <p class="checkbox-label-name">Customizable profile</p>
-                <p class="checkbox-label-description">
+            <div class="custom-checkbox__text">
+              <div class="custom-checkbox__title">
+                <p class="custom-checkbox__label-name">Customizable profile</p>
+                <p class="custom-checkbox__label-description">
                   Custom theme on your profile
                 </p>
               </div>
-              <p class="checkbox-label-pricing">+$20/yr</p>
+              <p class="custom-checkbox__label-pricing">+$20/yr</p>
             </div>
           </label>
         </div>
@@ -341,57 +343,68 @@
 
       <!-- SUMMARY PAGE -->
       <div id="summary" class="hidden">
-        <div class="summary-monthly">
+        <div class="summary--monthly">
           <div class="summary">
             <div class="chosen-plan">
-              <div class="plan-info">
-                <p class="plan-name marine-bold">
-                  <span class="plan-name-title plan-name-title-monthly"
+              <div class="chosen-plan__info">
+                <p class="chosen-plan__name marine-bold">
+                  <span
+                    class="chosen-plan__name-title chosen-plan__name-title--monthly"
                     >???</span
                   >
                   (Monthly)
                 </p>
-                <button class="change-plan cool-gray-text">Change</button>
+                <button class="btn--change-plan cool-gray-text">Change</button>
               </div>
-              <p class="plan-price marine-bold">
-                $<span class="plan-price-num plan-price-num-monthly">??</span
+              <p class="chosen-plan__price marine-bold">
+                $<span
+                  class="chosen-plan__price-num chosen-plan__price-num--monthly"
+                  >??</span
                 >/mo
               </p>
             </div>
             <hr />
-            <div class="chosen-add-ons chosen-add-ons-monthly"></div>
+            <div class="chosen-add-ons chosen-add-ons--monthly"></div>
           </div>
           <div class="total-cost">
-            <p class="total-period cool-gray-text">Total (per month)</p>
-            <span class="total-price"
-              >$<span class="total-price-num total-price-num-monthly">??</span
+            <p class="total-cost__period cool-gray-text">Total (per month)</p>
+            <span class="total-cost__price"
+              >$<span
+                class="total-cost__price-num total-cost__price-num--monthly"
+                >??</span
               >/mo</span
             >
           </div>
         </div>
-        <div class="summary-yearly hidden">
+        <div class="summary--yearly hidden">
           <div class="summary">
             <div class="chosen-plan">
-              <div class="plan-info">
-                <p class="plan-name marine-bold">
-                  <span class="plan-name-title plan-name-title-yearly"
+              <div class="chosen-plan__info">
+                <p class="chosen-plan__name marine-bold">
+                  <span
+                    class="chosen-plan__name-title chosen-plan__name-title--yearly"
                     >???</span
                   >
                   (Yearly)
                 </p>
-                <button class="change-plan cool-gray-text">Change</button>
+                <button class="btn--change-plan cool-gray-text">Change</button>
               </div>
-              <p class="plan-price marine-bold">
-                $<span class="plan-price-num plan-price-num-yearly">??</span>/yr
+              <p class="chosen-plan__price marine-bold">
+                $<span
+                  class="chosen-plan__price-num chosen-plan__price-num--yearly"
+                  >??</span
+                >/yr
               </p>
             </div>
             <hr />
-            <div class="chosen-add-ons chosen-add-ons-yearly"></div>
+            <div class="chosen-add-ons chosen-add-ons--yearly"></div>
           </div>
           <div class="total-cost">
-            <p class="total-period cool-gray-text">Total (per year)</p>
-            <span class="total-price"
-              >$<span class="total-price-num total-price-num-yearly">??</span
+            <p class="total-cost__period cool-gray-text">Total (per year)</p>
+            <span class="total-cost__price"
+              >$<span
+                class="total-cost__price-num total-cost__price-num--yearly"
+                >??</span
               >/yr</span
             >
           </div>
@@ -399,14 +412,14 @@
       </div>
 
       <!-- CONFIRMED PAGE -->
-      <div id="confirmed" class="hidden">
+      <div id="confirmed" class="form__confirmed hidden">
         <img
           src="../assets/images/icon-thank-you.svg"
           alt="confirmed"
           class="thank-you-icon"
         />
-        <h2 class="confirmed-heading-primary">Thank you!</h2>
-        <h3 class="confirmed-heading-secondary">
+        <h2 class="heading-primary--confirmed">Thank you!</h2>
+        <h3 class="heading-secondary--confirmed">
           Thanks for confirming your subscription! We hope you have fun using
           our platform. If you ever need support, please feel free to email us
           at support@loremgaming.com.
@@ -415,8 +428,8 @@
     </main>
 
     <footer class="footer">
-      <button class="btn-back hidden-btn">Go Back</button>
-      <button class="btn-next">Next Step</button>
+      <button class="btn--back hidden-btn">Go Back</button>
+      <button class="btn--next">Next Step</button>
     </footer>
 
     <div class="attribution">

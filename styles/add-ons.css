@@ -1,7 +1,7 @@
 /********************************************/
 /********* ADD-ONS *********/
 /* FORM */
-.form-add-ons {
+.form__add-ons {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,8 +10,8 @@
   margin-top: 20px;
 }
 
-.custom-checkbox-monthly,
-.custom-checkbox-yearly {
+.custom-checkbox--monthly,
+.custom-checkbox--yearly {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,6 +39,12 @@
   cursor: pointer;
 }
 
+.custom-checkbox.checked {
+  background-color: var(--magnolia);
+  border: 1px solid var(--purplish-blue);
+}
+
+/* box for checkmark */
 .checkmark {
   position: absolute;
   top: 50%;
@@ -51,12 +57,18 @@
   border: 1px solid var(--light-gray);
   border-radius: 4px;
 }
-
-.custom-checkbox.checked {
-  background-color: var(--magnolia);
-  border: 1px solid var(--purplish-blue);
+/* checkmark ✔ - nothing yet */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
 }
 
+/* when checked, box for checkmark background changes */
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: var(--purplish-blue);
+}
+/* when checked, a white checkmark ✔ appears */
 .custom-checkbox input:checked ~ .checkmark:after {
   content: "";
   position: absolute;
@@ -72,21 +84,7 @@
   transition: all 0.2s;
 }
 
-.custom-checkbox input:checked ~ .checkmark {
-  background-color: var(--purplish-blue);
-}
-
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.custom-checkbox input:checked ~ .checkmark:after {
-  display: block;
-}
-
-.checkbox-text {
+.custom-checkbox__text {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -94,7 +92,7 @@
   padding-left: 40px;
 }
 
-.checkbox-title {
+.custom-checkbox__title {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -102,19 +100,19 @@
   gap: 5px;
 }
 
-.checkbox-label-name {
+.custom-checkbox__label-name {
   font-size: 0.9rem;
   font-weight: var(--medium-weight);
   color: var(--marine-blue);
 }
 
-.checkbox-label-description {
+.custom-checkbox__label-description {
   font-size: 0.8rem;
   color: var(--cool-gray);
   letter-spacing: -0.5px;
 }
 
-.checkbox-label-pricing {
+.custom-checkbox__label-pricing {
   font-size: 0.8rem;
   font-weight: var(--medium-weight);
   color: var(--purplish-blue);

@@ -52,14 +52,14 @@ let currentUserInfo = {
 const stepTitle = document.querySelector(".heading-primary");
 const stepSubtitle = document.querySelector(".heading-secondary");
 
-const allNavBtns = document.querySelectorAll(".nav-btn");
-const navBtn1 = document.querySelector(".nav-btn-1");
-const navBtn2 = document.querySelector(".nav-btn-2");
-const navBtn3 = document.querySelector(".nav-btn-3");
-const navBtn4 = document.querySelector(".nav-btn-4");
+const allNavBtns = document.querySelectorAll(".btn--nav");
+const navBtn1 = document.querySelector(".btn--nav-1");
+const navBtn2 = document.querySelector(".btn--nav-2");
+const navBtn3 = document.querySelector(".btn--nav-3");
+const navBtn4 = document.querySelector(".btn--nav-4");
 
-const btnNext = document.querySelector(".btn-next");
-const btnBack = document.querySelector(".btn-back");
+const btnNext = document.querySelector(".btn--next");
+const btnBack = document.querySelector(".btn--back");
 
 /********************************************/
 /********* STEP 1: Personal Info *********/
@@ -90,15 +90,15 @@ function updateInputValue() {
 // 1 - Real-time empty input check
 function liveEmptyInputCheck(e) {
   const inputHint = e.target
-    .closest(".form-item")
-    .querySelector(".input-label")
-    .querySelector(".input-hint");
+    .closest(".form__item")
+    .querySelector(".input__label")
+    .querySelector(".input__hint");
 
   if (e.target.value.trim().length > 0) {
-    e.target.classList.remove("red-border");
+    e.target.classList.remove("border--red");
     inputHint.textContent = "";
   } else {
-    e.target.classList.add("red-border");
+    e.target.classList.add("border--red");
     inputHint.textContent = "This field is required";
   }
 }
@@ -124,23 +124,23 @@ function validateForm() {
   const userEmailVal = userEmail.value.trim();
   const userPhoneVal = userPhone.value.trim();
 
-  const nameHint = document.querySelector(".name-hint");
-  const emailHint = document.querySelector(".email-hint");
-  const phoneHint = document.querySelector(".phone-hint");
+  const nameHint = document.querySelector(".input__hint--name");
+  const emailHint = document.querySelector(".input__hint--email");
+  const phoneHint = document.querySelector(".input__hint--phone");
 
   // add red border + hint for empty input
   function emptyInput(input, inputHint) {
-    input.classList.add("red-border");
+    input.classList.add("border--red");
     inputHint.textContent = "This field is required";
   }
   // add red border + hint for invalid input
   function invalidInput(input, inputHint) {
-    input.classList.add("red-border");
+    input.classList.add("border--red");
     inputHint.textContent = `Invalid ${input.name}`;
   }
   // remove red border + hint for valid input
   function validInput(input, inputHint) {
-    input.classList.remove("red-border");
+    input.classList.remove("border--red");
     inputHint.textContent = "";
   }
 
@@ -188,13 +188,13 @@ function validateForm() {
 /********* STEP 2: Select Plan *********/
 function selectPlanPage() {
   // VARIABLES
-  const allPlanItems = document.querySelectorAll(".form-item-plan");
-  const monthlyPlans = document.querySelector(".form-monthly-plans");
-  const yearlyPlans = document.querySelector(".form-yearly-plans");
+  const allPlanItems = document.querySelectorAll(".form__item--plan");
+  const monthlyPlans = document.querySelector(".form__select-plan--monthly");
+  const yearlyPlans = document.querySelector(".form__select-plan--yearly");
 
-  const btnMonthly = document.querySelector(".btn-monthly");
-  const btnYearly = document.querySelector(".btn-yearly");
-  const btnTogglePlans = document.querySelector(".btn-toggle");
+  const btnMonthly = document.querySelector(".btn--monthly");
+  const btnYearly = document.querySelector(".btn--yearly");
+  const btnTogglePlans = document.querySelector(".btn--toggle");
 
   // Default plan selected - "arcade-monthly"
   let selectedPlan = document.querySelector(`.${currentUserInfo.plan}`);
@@ -236,7 +236,7 @@ function selectPlanPage() {
 
     // changing plan
     //- unchoose all yearly plans
-    yearlyPlans.querySelectorAll(".form-item").forEach(item => {
+    yearlyPlans.querySelectorAll(".form__item").forEach(item => {
       item.classList.remove("checked");
       item.querySelector("input").setAttribute("checked", false);
     });
@@ -244,16 +244,16 @@ function selectPlanPage() {
 
     //- choose first plan from monthly plans and add 'checked'
     monthlyPlans
-      .querySelectorAll(".form-item-plan")[0]
+      .querySelectorAll(".form__item--plan")[0]
       .querySelector("input")
       .setAttribute("checked", true);
     monthlyPlans
-      .querySelectorAll(".form-item-plan")[0]
+      .querySelectorAll(".form__item--plan")[0]
       .classList.add("checked");
 
     // find current user data and update the plan
     currentUserInfo.plan = monthlyPlans
-      .querySelectorAll(".form-item-plan")[0]
+      .querySelectorAll(".form__item--plan")[0]
       .querySelector("input").value;
     console.log("Switching to monthly plans: ", currentUserInfo);
 
@@ -276,21 +276,23 @@ function selectPlanPage() {
 
     // changing plan
     //- unchoose all yearly plans
-    monthlyPlans.querySelectorAll(".form-item-plan").forEach(item => {
+    monthlyPlans.querySelectorAll(".form__item--plan").forEach(item => {
       item.classList.remove("checked");
       item.querySelector("input").setAttribute("checked", false);
     });
 
     //- choose first plan from yearly plans
     yearlyPlans
-      .querySelectorAll(".form-item-plan")[0]
+      .querySelectorAll(".form__item--plan")[0]
       .querySelector("input")
       .setAttribute("checked", true);
-    yearlyPlans.querySelectorAll(".form-item-plan")[0].classList.add("checked");
+    yearlyPlans
+      .querySelectorAll(".form__item--plan")[0]
+      .classList.add("checked");
 
     // find current user data and update the plan
     currentUserInfo.plan = yearlyPlans
-      .querySelectorAll(".form-item")[0]
+      .querySelectorAll(".form__item")[0]
       .querySelector("input").value;
     console.log("Switching to yearly plans: ", currentUserInfo);
 
@@ -327,7 +329,7 @@ function selectPlanPage() {
 function addOnsPage() {
   const allCheckboxes = document.querySelectorAll(".custom-checkbox");
 
-  // toggle border+background when clicked
+  // toggle border + background when clicked
   allCheckboxes.forEach(checkbox => {
     checkbox.addEventListener("change", function () {
       this.classList.toggle("checked");
@@ -339,7 +341,7 @@ function addOnsPage() {
 /********* Summary Page *********/
 function summaryPage() {
   // when clicking on "change" btn to change plans
-  const allChangePlanBtns = document.querySelectorAll(".change-plan");
+  const allChangePlanBtns = document.querySelectorAll(".btn--change-plan");
   function goToSelectPlanPage() {
     // Nav button style change
     navBtn1.classList.remove("current-page");
@@ -414,23 +416,25 @@ function nextStep() {
 
     if (
       document
-        .querySelector(".form-item-plan.checked")
-        .closest(".form-monthly-plans")
+        .querySelector(".form__item--plan.checked")
+        .closest(".form__select-plan--monthly")
     ) {
       document
-        .querySelector(".custom-checkbox-monthly")
+        .querySelector(".custom-checkbox--monthly")
         .classList.remove("hidden");
-      document.querySelector(".custom-checkbox-yearly").classList.add("hidden");
+      document
+        .querySelector(".custom-checkbox--yearly")
+        .classList.add("hidden");
     } else if (
       document
-        .querySelector(".form-item-plan.checked")
-        .closest(".form-yearly-plans")
+        .querySelector(".form__item--plan.checked")
+        .closest(".form__select-plan--yearly")
     ) {
       document
-        .querySelector(".custom-checkbox-yearly")
+        .querySelector(".custom-checkbox--yearly")
         .classList.remove("hidden");
       document
-        .querySelector(".custom-checkbox-monthly")
+        .querySelector(".custom-checkbox--monthly")
         .classList.add("hidden");
     }
 
@@ -440,7 +444,7 @@ function nextStep() {
   } else if (!addOns.classList.contains("hidden")) {
     // Save chosen add-ons in the currentUserInfo
     const chosenAddOnsPeriod = Array.from(
-      document.querySelectorAll(".custom-checkbox-container")
+      document.querySelectorAll(".custom-checkbox__container")
     ).find(item => !item.classList.contains("hidden"));
 
     const initialAddOnEls = Array.from(
@@ -470,16 +474,16 @@ function nextStep() {
       "Double-check everything looks OK before confirming.";
 
     // Which summary to display: monthly or yearly
-    if (chosenAddOnsPeriod.classList.contains("custom-checkbox-monthly")) {
+    if (chosenAddOnsPeriod.classList.contains("custom-checkbox--monthly")) {
       // MONTHLY
-      document.querySelector(".summary-monthly").classList.remove("hidden");
-      document.querySelector(".summary-yearly").classList.add("hidden");
+      document.querySelector(".summary--monthly").classList.remove("hidden");
+      document.querySelector(".summary--yearly").classList.add("hidden");
     } else if (
-      chosenAddOnsPeriod.classList.contains("custom-checkbox-yearly")
+      chosenAddOnsPeriod.classList.contains("custom-checkbox--yearly")
     ) {
       // YEARLY
-      document.querySelector(".summary-monthly").classList.add("hidden");
-      document.querySelector(".summary-yearly").classList.remove("hidden");
+      document.querySelector(".summary--monthly").classList.add("hidden");
+      document.querySelector(".summary--yearly").classList.remove("hidden");
     }
 
     // bring and apply correct data
@@ -492,36 +496,34 @@ function nextStep() {
     const planPriceNum = pricing[planPeriodStr].plan[planTitleStr];
 
     // AddOns
-    // check if addons exists
-    if (currentUserInfo.addOns.length > 0) {
-      const addOns = currentUserInfo.addOns; // ['online-service-monthly', 'larger-storage-monthly']
+    const currentAddOns = currentUserInfo.addOns; // ['online-service-monthly', 'larger-storage-monthly'] or []
 
-      function addOnsToCamelCase(str) {
-        return `${str.split("-")[0]}${str
-          .split("-")[1]
-          .slice(0, 1)
-          .toUpperCase()}${str.split("-")[1].slice(1)}`;
-      }
-      // 'onlineService'
+    function addOnsToCamelCase(str) {
+      return `${str.split("-")[0]}${str
+        .split("-")[1]
+        .slice(0, 1)
+        .toUpperCase()}${str.split("-")[1].slice(1)}`;
+    }
+    // 'onlineService'
 
-      function addOnsToCapitalized(str) {
-        return `${str.split("-")[0].slice(0, 1).toUpperCase()}${str
-          .split("-")[0]
-          .slice(1)} ${str.split("-")[1].slice(0, 1).toUpperCase()}${str
-          .split("-")[1]
-          .slice(1)}`;
-      }
-      // ['Online Service', 'Larger Storage']
+    function addOnsToCapitalized(str) {
+      return `${str.split("-")[0].slice(0, 1).toUpperCase()}${str
+        .split("-")[0]
+        .slice(1)} ${str.split("-")[1].slice(0, 1).toUpperCase()}${str
+        .split("-")[1]
+        .slice(1)}`;
+    }
+    // ['Online Service', 'Larger Storage']
 
-      const textContentArr = addOns.map(addon => {
-        const camelCaseTitle = addOnsToCamelCase(addon);
-        const capitalizedTitle = addOnsToCapitalized(addon);
-        return {
-          addOnTitle: capitalizedTitle,
-          addOnPrice: pricing[planPeriodStr].addOns[camelCaseTitle],
-        };
-      });
-      /* 
+    const addOnTextContentArr = currentAddOns.map(addon => {
+      const camelCaseTitle = addOnsToCamelCase(addon);
+      const capitalizedTitle = addOnsToCapitalized(addon);
+      return {
+        addOnTitle: capitalizedTitle,
+        addOnPrice: pricing[planPeriodStr].addOns[camelCaseTitle],
+      };
+    });
+    /* 
       [
         {
           addOnTitle: 'Online Service',
@@ -533,29 +535,30 @@ function nextStep() {
         }
       ]  
       */
-      console.log(textContentArr);
+    console.log("addOnTextContentArr: ", addOnTextContentArr);
 
-      // Display different summary depending on payment term (monthly / yearly)
-      const addOnsPriceNums = textContentArr.map(i => +i.addOnPrice);
-      const totalPriceNum =
-        +planPriceNum + addOnsPriceNums.reduce((acc, cur) => acc + cur, 0);
+    // Display different summary depending on payment term (monthly / yearly)
+    // prices
+    const addOnsPriceNums = addOnTextContentArr.map(i => +i.addOnPrice);
+    const totalPriceNum =
+      +planPriceNum + addOnsPriceNums.reduce((acc, cur) => acc + cur, 0);
 
-      // monthly
-      if (planPeriodStr === "monthly") {
-        const planTitle = document.querySelector(
-          ".plan-name-title.plan-name-title-monthly"
-        );
-        const planPrice = document.querySelector(
-          ".plan-price-num.plan-price-num-monthly"
-        );
-        planTitle.textContent = `${planTitleStr
-          .slice(0, 1)
-          .toUpperCase()}${planTitleStr.slice(1)}`; // Arcade
-        planPrice.textContent = planPriceNum;
+    // monthly
+    if (planPeriodStr === "monthly") {
+      const planTitle = document.querySelector(
+        ".chosen-plan__name-title.chosen-plan__name-title--monthly"
+      );
+      const planPrice = document.querySelector(
+        ".chosen-plan__price-num.chosen-plan__price-num--monthly"
+      );
+      planTitle.textContent = `${planTitleStr
+        .slice(0, 1)
+        .toUpperCase()}${planTitleStr.slice(1)}`; // Arcade
+      planPrice.textContent = planPriceNum;
 
-        const textContent = textContentArr
-          .map(i => {
-            return `
+      const addOnTextContent = addOnTextContentArr
+        .map(i => {
+          return `
             <div class="add-on">
               <p class="add-on-name cool-gray-text">
                 <span class="add-on-name-title">${i.addOnTitle}</span>
@@ -565,34 +568,35 @@ function nextStep() {
               </p>
             </div>
           `;
-          })
-          .join("");
+        })
+        .join("");
 
-        const addOnsContainer = document.querySelector(
-          ".chosen-add-ons.chosen-add-ons-monthly"
-        );
-        addOnsContainer.innerHTML = textContent;
+      const addOnsContainer = document.querySelector(
+        ".chosen-add-ons.chosen-add-ons--monthly"
+      );
+      addOnsContainer.innerHTML = addOnTextContent;
 
-        // Total Price
-        const totalPrice = document.querySelector(
-          ".total-price-num.total-price-num-monthly"
-        );
-        totalPrice.textContent = totalPriceNum;
-      } else if (planPeriodStr === "yearly") {
-        const planTitle = document.querySelector(
-          ".plan-name-title.plan-name-title-yearly"
-        );
-        const planPrice = document.querySelector(
-          ".plan-price-num.plan-price-num-yearly"
-        );
-        planTitle.textContent = `${planTitleStr
-          .slice(0, 1)
-          .toUpperCase()}${planTitleStr.slice(1)}`; // Arcade
-        planPrice.textContent = planPriceNum;
+      // Total Price
+      const totalPrice = document.querySelector(
+        ".total-cost__price-num.total-cost__price-num--monthly"
+      );
+      totalPrice.textContent = totalPriceNum;
+    } else if (planPeriodStr === "yearly") {
+      // yearly
+      const planTitle = document.querySelector(
+        ".chosen-plan__name-title.chosen-plan__name-title--yearly"
+      );
+      const planPrice = document.querySelector(
+        ".chosen-plan__price-num.chosen-plan__price-num--yearly"
+      );
+      planTitle.textContent = `${planTitleStr
+        .slice(0, 1)
+        .toUpperCase()}${planTitleStr.slice(1)}`; // Arcade
+      planPrice.textContent = planPriceNum;
 
-        const textContent = textContentArr
-          .map(i => {
-            return `
+      const addOnTextContent = addOnTextContentArr
+        .map(i => {
+          return `
           <div class="add-on">
             <p class="add-on-name cool-gray-text">
               <span class="add-on-name-title">${i.addOnTitle}</span>
@@ -602,21 +606,21 @@ function nextStep() {
             </p>
           </div>
         `;
-          })
-          .join("");
+        })
+        .join("");
 
-        const addOnsContainer = document.querySelector(
-          ".chosen-add-ons.chosen-add-ons-yearly"
-        );
-        addOnsContainer.innerHTML = textContent;
+      const addOnsContainer = document.querySelector(
+        ".chosen-add-ons.chosen-add-ons--yearly"
+      );
+      addOnsContainer.innerHTML = addOnTextContent;
 
-        // Total Price
-        const totalPrice = document.querySelector(
-          ".total-price-num.total-price-num-yearly"
-        );
-        totalPrice.textContent = totalPriceNum;
-      }
+      // Total Price
+      const totalPrice = document.querySelector(
+        ".total-cost__price-num.total-cost__price-num--yearly"
+      );
+      totalPrice.textContent = totalPriceNum;
     }
+    // }
   } else if (!summary.classList.contains("hidden")) {
     // Showing the corresponding page
     personalInfo.classList.add("hidden");

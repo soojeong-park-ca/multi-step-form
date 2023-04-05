@@ -39,7 +39,7 @@ hr {
   border: 0.5px solid var(--light-gray);
 }
 
-.plan-info {
+.chosen-plan__info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -85,7 +85,7 @@ hr {
   font-size: 0.9rem;
 }
 
-.total-price {
+.total-cost__price {
   font-weight: var(--bold-weight);
   color: var(--purplish-blue);
 }
