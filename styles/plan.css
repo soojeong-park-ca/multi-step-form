@@ -46,7 +46,7 @@
   width: 0;
 }
 
-.input-radio__label {
+.form__item-detail {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -54,18 +54,18 @@
   gap: 4px;
 }
 
-.input-radio__label--name {
+.form__item-detail--name {
   font-weight: var(--medium-weight);
   color: var(--marine-blue);
 }
 
-.input-radio__label--pricing {
+.form__item-detail--pricing {
   font-size: 0.9rem;
   font-weight: var(--medium-weight);
   color: var(--cool-gray);
 }
 
-.input-radio__label--benefit {
+.form__item-detail--benefit {
   font-size: 0.7rem;
   color: var(--marine-blue);
 }

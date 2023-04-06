@@ -83,7 +83,10 @@
         <form class="form form__select-plan">
           <fieldset id="plan-fieldset" required>
             <div class="form__select-plan--monthly">
-              <div class="form__item form__item--plan arcade-monthly checked">
+              <label
+                for="arcade-monthly"
+                class="form__item form__item--plan arcade-monthly checked"
+              >
                 <img
                   class="radio-icon"
                   src="../assets/images/icon-arcade.svg"
@@ -97,12 +100,15 @@
                   value="arcade-monthly"
                   checked
                 />
-                <label for="arcade-monthly" class="input-radio__label">
-                  <p class="input-radio__label--name">Arcade</p>
-                  <p class="input-radio__label--pricing">$9/mo</p>
-                </label>
-              </div>
-              <div class="form__item form__item--plan advanced-monthly">
+                <div class="form__item-detail">
+                  <p class="form__item-detail--name">Arcade</p>
+                  <p class="form__item-detail--pricing">$9/mo</p>
+                </div>
+              </label>
+              <label
+                for="advanced-monthly"
+                class="form__item form__item--plan advanced-monthly"
+              >
                 <img
                   class="radio-icon"
                   src="../assets/images/icon-advanced.svg"
@@ -115,12 +121,15 @@
                   name="plan"
                   value="advanced-monthly"
                 />
-                <label for="advanced-monthly" class="input-radio__label">
-                  <p class="input-radio__label--name">Advanced</p>
-                  <p class="input-radio__label--pricing">$12/mo</p>
-                </label>
-              </div>
-              <div class="form__item form__item--plan pro-monthly">
+                <div class="form__item-detail">
+                  <p class="form__item-detail--name">Advanced</p>
+                  <p class="form__item-detail--pricing">$12/mo</p>
+                </div>
+              </label>
+              <label
+                for="pro-monthly"
+                class="form__item form__item--plan pro-monthly"
+              >
                 <img
                   class="radio-icon"
                   src="../assets/images/icon-pro.svg"
@@ -133,15 +142,18 @@
                   name="plan"
                   value="pro-monthly"
                 />
-                <label for="pro-monthly" class="input-radio__label">
-                  <p class="input-radio__label--name">Pro</p>
-                  <p class="input-radio__label--pricing">$15/mo</p>
-                </label>
-              </div>
+                <div class="form__item-detail">
+                  <p class="form__item-detail--name">Pro</p>
+                  <p class="form__item-detail--pricing">$15/mo</p>
+                </div>
+              </label>
             </div>
 
             <div class="form__select-plan--yearly hidden">
-              <div class="form__item form__item--plan arcade-yearly">
+              <label
+                for="arcade-yearly"
+                class="form__item form__item--plan arcade-yearly"
+              >
                 <img
                   class="radio-icon"
                   src="../assets/images/icon-arcade.svg"
@@ -154,13 +166,16 @@
                   name="plan"
                   value="arcade-yearly"
                 />
-                <label for="arcade-yearly" class="input-radio__label">
-                  <p class="input-radio__label--name">Arcade</p>
-                  <p class="input-radio__label--pricing">$90/yr</p>
-                  <p class="input-radio__label--benefit">2 months free</p>
-                </label>
-              </div>
-              <div class="form__item form__item--plan advanced-yearly">
+                <div class="form__item-detail">
+                  <p class="form__item-detail--name">Arcade</p>
+                  <p class="form__item-detail--pricing">$90/yr</p>
+                  <p class="form__item-detail--benefit">2 months free</p>
+                </div>
+              </label>
+              <label
+                for="advanced-yearly"
+                class="form__item form__item--plan advanced-yearly"
+              >
                 <img
                   class="radio-icon"
                   src="../assets/images/icon-advanced.svg"
@@ -173,13 +188,16 @@
                   name="plan"
                   value="advanced-yearly"
                 />
-                <label for="advanced-yearly" class="input-radio__label">
-                  <p class="input-radio__label--name">Advanced</p>
-                  <p class="input-radio__label--pricing">$120/yr</p>
-                  <p class="input-radio__label--benefit">2 months free</p>
-                </label>
-              </div>
-              <div class="form__item form__item--plan pro-yearly">
+                <div class="form__item-detail">
+                  <p class="form__item-detail--name">Advanced</p>
+                  <p class="form__item-detail--pricing">$120/yr</p>
+                  <p class="form__item-detail--benefit">2 months free</p>
+                </div>
+              </label>
+              <label
+                for="pro-yearly"
+                class="form__item form__item--plan pro-yearly"
+              >
                 <img
                   class="radio-icon"
                   src="../assets/images/icon-pro.svg"
@@ -192,12 +210,12 @@
                   name="plan"
                   value="pro-yearly"
                 />
-                <label for="pro-yearly" class="input-radio__label">
-                  <p class="input-radio__label--name">Pro</p>
-                  <p class="input-radio__label--pricing">$150/yr</p>
-                  <p class="input-radio__label--benefit">2 months free</p>
-                </label>
-              </div>
+                <div class="form__item-detail">
+                  <p class="form__item-detail--name">Pro</p>
+                  <p class="form__item-detail--pricing">$150/yr</p>
+                  <p class="form__item-detail--benefit">2 months free</p>
+                </div>
+              </label>
             </div>
           </fieldset>
         </form>
