@@ -1,5 +1,5 @@
 /********************************************/
-/********* Page Element Functions *********/
+/********* Page Elements *********/
 const personalInfo = document.getElementById("personal-info");
 const selectPlan = document.getElementById("select-plan");
 const addOns = document.getElementById("add-ons");
@@ -8,6 +8,7 @@ const confirmed = document.getElementById("confirmed");
 
 /********************************************/
 /********* General *********/
+// VARIABLES
 // Product pricing info
 const pricing = {
   monthly: {
@@ -36,9 +37,6 @@ const pricing = {
   },
 };
 
-// ❗️ all saved user data
-const personalInfoData = [];
-
 // initial current user data
 let currentUserInfo = {
   id: crypto.randomUUID(),
@@ -61,13 +59,22 @@ const navBtn4 = document.querySelector(".btn--nav-4");
 const btnNext = document.querySelector(".btn--next");
 const btnBack = document.querySelector(".btn--back");
 
+// FUNCTIONS
+// Add / Remove 'hidden' class
+function addHiddenClass(target) {
+  target.classList.add("hidden");
+}
+function removeHiddenClass(target) {
+  target.classList.remove("hidden");
+}
+
 /********************************************/
 /********* STEP 1: Personal Info *********/
 // VARIABLES
 const allInputs = document.querySelectorAll(".input");
-const userName = document.getElementById("input-name");
-const userEmail = document.getElementById("input-email");
-const userPhone = document.getElementById("input-phone");
+const userName = document.getElementById("name");
+const userEmail = document.getElementById("email");
+const userPhone = document.getElementById("phone");
 
 // FUNCTIONS
 // Saving user data
@@ -87,6 +94,14 @@ function updateInputValue() {
 }
 
 // Input Validation
+// Add / Remove red border
+function addRedBorder(target) {
+  target.classList.add("border--red");
+}
+function removeRedBorder(target) {
+  target.classList.remove("border--red");
+}
+
 // 1 - Real-time empty input check
 function liveEmptyInputCheck(e) {
   const inputHint = e.target
@@ -95,10 +110,10 @@ function liveEmptyInputCheck(e) {
     .querySelector(".input__hint");
 
   if (e.target.value.trim().length > 0) {
-    e.target.classList.remove("border--red");
+    removeRedBorder(e.target);
     inputHint.textContent = "";
   } else {
-    e.target.classList.add("border--red");
+    addRedBorder(e.target);
     inputHint.textContent = "This field is required";
   }
 }
@@ -115,10 +130,9 @@ allInputs.forEach(input =>
 
 // 2 - Form Validation Check (for after btn click)
 function validateForm() {
-  const nameRegex = /^[a-zA-Z ]{2,30}$/;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneRegex =
-    /^(\+?\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$|^(\+?\d{1,2}\s)?\d{3}[\s-]?\d{3}[\s-]?\d{4}$/;
+  const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+  const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const phoneRegex = /^(\+?\d{1,3}[- ]?)?\d{10}$/;
 
   const userNameVal = userName.value.trim();
   const userEmailVal = userEmail.value.trim();
@@ -130,17 +144,17 @@ function validateForm() {
 
   // add red border + hint for empty input
   function emptyInput(input, inputHint) {
-    input.classList.add("border--red");
+    addRedBorder(input);
     inputHint.textContent = "This field is required";
   }
   // add red border + hint for invalid input
   function invalidInput(input, inputHint) {
-    input.classList.add("border--red");
+    addRedBorder(input);
     inputHint.textContent = `Invalid ${input.name}`;
   }
   // remove red border + hint for valid input
   function validInput(input, inputHint) {
-    input.classList.remove("border--red");
+    removeRedBorder(input);
     inputHint.textContent = "";
   }
 
@@ -258,8 +272,8 @@ function selectPlanPage() {
     console.log("Switching to monthly plans: ", currentUserInfo);
 
     // hide yearly plans and show monthly plans
-    yearlyPlans.classList.add("hidden");
-    monthlyPlans.classList.remove("hidden");
+    addHiddenClass(yearlyPlans);
+    removeHiddenClass(monthlyPlans);
   }
   // when Monthly button clicked
   btnMonthly.addEventListener("click", displayMonthlyPlans);
@@ -297,8 +311,8 @@ function selectPlanPage() {
     console.log("Switching to yearly plans: ", currentUserInfo);
 
     // hide monthly plans and show yearly plans
-    monthlyPlans.classList.add("hidden");
-    yearlyPlans.classList.remove("hidden");
+    addHiddenClass(monthlyPlans);
+    removeHiddenClass(yearlyPlans);
   }
   // when Yearly button clicked
   btnYearly.addEventListener("click", displayYearlyPlans);
@@ -339,22 +353,29 @@ function addOnsPage() {
 
 /********************************************/
 /********* Summary Page *********/
+// Add / Remove 'current-page' class
+function removeCurrentPageClass(target) {
+  target.classList.remove("current-page");
+}
+function addCurrentPageClass(target) {
+  target.classList.add("current-page");
+}
+
 function summaryPage() {
   // when clicking on "change" btn to change plans
   const allChangePlanBtns = document.querySelectorAll(".btn--change-plan");
   function goToSelectPlanPage() {
     // Nav button style change
-    navBtn1.classList.remove("current-page");
-    navBtn3.classList.remove("current-page");
-    navBtn4.classList.remove("current-page");
-    navBtn2.classList.add("current-page");
+    removeCurrentPageClass(navBtn1);
+    removeCurrentPageClass(navBtn3);
+    removeCurrentPageClass(navBtn4);
+    addCurrentPageClass(navBtn2);
 
-    // Showing the corresponding page
-    selectPlan.classList.remove("hidden");
-
-    personalInfo.classList.add("hidden");
-    addOns.classList.add("hidden");
-    summary.classList.add("hidden");
+    // Show Select Plan Page
+    removeHiddenClass(selectPlan);
+    addHiddenClass(personalInfo);
+    addHiddenClass(addOns);
+    addHiddenClass(summary);
 
     // Change headings
     stepTitle.textContent = "Select your plan";
@@ -377,43 +398,50 @@ summaryPage();
 /********* Next Step Button *********/
 function nextStep() {
   if (!personalInfo.classList.contains("hidden")) {
+    // Going from STEP 1 to STEP 2
     // save validated user info(name, email, phone)
     validateForm();
+    // If everything on form is valid
     if (validateForm()) {
       // Nav button style change
-      navBtn1.classList.remove("current-page");
-      navBtn3.classList.remove("current-page");
-      navBtn4.classList.remove("current-page");
-      navBtn2.classList.add("current-page");
-
-      // Showing the corresponding page
-      selectPlan.classList.remove("hidden");
-
-      personalInfo.classList.add("hidden");
-      addOns.classList.add("hidden");
-      summary.classList.add("hidden");
-
-      btnBack.classList.remove("hidden-btn");
+      removeCurrentPageClass(navBtn1);
+      removeCurrentPageClass(navBtn3);
+      removeCurrentPageClass(navBtn4);
+      addCurrentPageClass(navBtn2);
 
       // Change headings
       stepTitle.textContent = "Select your plan";
       stepSubtitle.textContent =
         "You have the option of monthly or yearly billing.";
-    }
+
+      // Showing the corresponding page
+      removeHiddenClass(selectPlan);
+      addHiddenClass(personalInfo);
+      addHiddenClass(addOns);
+      addHiddenClass(summary);
+
+      // Un-hide the Go Back btn
+      btnBack.classList.remove("hidden-btn");
+    } else return;
   } else if (!selectPlan.classList.contains("hidden")) {
+    // Going from STEP 2 to STEP 3
     // Nav button style change
-    navBtn1.classList.remove("current-page");
-    navBtn2.classList.remove("current-page");
-    navBtn4.classList.remove("current-page");
-    navBtn3.classList.add("current-page");
+    removeCurrentPageClass(navBtn1);
+    removeCurrentPageClass(navBtn2);
+    removeCurrentPageClass(navBtn4);
+    addCurrentPageClass(navBtn3);
+
+    // Change headings
+    stepTitle.textContent = "Pick add-ons";
+    stepSubtitle.textContent = "Add-ons help enhance your gaming experience.";
 
     // Showing the corresponding page
-    addOns.classList.remove("hidden");
+    removeHiddenClass(addOns);
+    addHiddenClass(personalInfo);
+    addHiddenClass(selectPlan);
+    addHiddenClass(summary);
 
-    personalInfo.classList.add("hidden");
-    selectPlan.classList.add("hidden");
-    summary.classList.add("hidden");
-
+    // Showing either monthly add-ons or yearly add-ons
     if (
       document
         .querySelector(".form__item--plan.checked")
@@ -437,41 +465,37 @@ function nextStep() {
         .querySelector(".custom-checkbox--monthly")
         .classList.add("hidden");
     }
-
-    // Change headings
-    stepTitle.textContent = "Pick add-ons";
-    stepSubtitle.textContent = "Add-ons help enhance your gaming experience.";
   } else if (!addOns.classList.contains("hidden")) {
+    // Going from STEP 3 to STEP 4
     // Save chosen add-ons in the currentUserInfo
     const chosenAddOnsPeriod = Array.from(
       document.querySelectorAll(".custom-checkbox__container")
     ).find(item => !item.classList.contains("hidden"));
 
-    const initialAddOnEls = Array.from(
+    const allChosenAddOnInputs = Array.from(
       chosenAddOnsPeriod.querySelectorAll("input")
     ).filter(item => item.checked);
 
-    const initialAddOns = initialAddOnEls.map(item => item.value);
-    currentUserInfo.addOns = initialAddOns;
+    const chosenAddOns = allChosenAddOnInputs.map(item => item.value);
+    currentUserInfo.addOns = chosenAddOns;
     console.log(currentUserInfo);
 
     // Nav button style change
-    navBtn1.classList.remove("current-page");
-    navBtn2.classList.remove("current-page");
-    navBtn3.classList.remove("current-page");
-    navBtn4.classList.add("current-page");
-
-    // Showing the corresponding page
-    summary.classList.remove("hidden");
-
-    personalInfo.classList.add("hidden");
-    selectPlan.classList.add("hidden");
-    addOns.classList.add("hidden");
+    removeCurrentPageClass(navBtn1);
+    removeCurrentPageClass(navBtn2);
+    removeCurrentPageClass(navBtn3);
+    addCurrentPageClass(navBtn4);
 
     // Change headings
     stepTitle.textContent = "Finishing up";
     stepSubtitle.textContent =
       "Double-check everything looks OK before confirming.";
+
+    // Showing the corresponding page
+    removeHiddenClass(summary);
+    addHiddenClass(personalInfo);
+    addHiddenClass(selectPlan);
+    addHiddenClass(addOns);
 
     // Which summary to display: monthly or yearly
     if (chosenAddOnsPeriod.classList.contains("custom-checkbox--monthly")) {
@@ -487,7 +511,6 @@ function nextStep() {
     }
 
     // bring and apply correct data
-
     // Plan Title
     const planTitleStr = currentUserInfo.plan.split("-")[0]; // arcade
     // Plan Period
@@ -622,16 +645,17 @@ function nextStep() {
     }
     // }
   } else if (!summary.classList.contains("hidden")) {
-    // Showing the corresponding page
-    personalInfo.classList.add("hidden");
-    selectPlan.classList.add("hidden");
-    addOns.classList.add("hidden");
-    summary.classList.add("hidden");
-    confirmed.classList.remove("hidden");
-
+    // Going from SUMMARY to CONFIRMED (thank you page)
     // remove main headings
     stepTitle.textContent = "";
     stepSubtitle.textContent = "";
+
+    // Showing the corresponding page
+    removeHiddenClass(confirmed);
+    addHiddenClass(personalInfo);
+    addHiddenClass(selectPlan);
+    addHiddenClass(addOns);
+    addHiddenClass(summary);
 
     // remove all btns
     const footer = document.querySelector(".footer");
@@ -650,62 +674,62 @@ btnNext.addEventListener("click", nextStep);
 /********* Go Back Button *********/
 function goBack() {
   if (!selectPlan.classList.contains("hidden")) {
-    // Hide Go Back button
-    btnBack.classList.add("hidden-btn");
-
-    // Nav button style change
-    navBtn2.classList.remove("current-page");
-    navBtn3.classList.remove("current-page");
-    navBtn4.classList.remove("current-page");
-    navBtn1.classList.add("current-page");
-
-    // Showing the corresponding page
-    personalInfo.classList.remove("hidden");
-
-    selectPlan.classList.add("hidden");
-    addOns.classList.add("hidden");
-    summary.classList.add("hidden");
-
+    // Going from STEP 2 to STEP 1
     // Change headings
     stepTitle.textContent = "Personal info";
     stepSubtitle.textContent =
       "Please provide your name, email address, and phone number.";
-  } else if (!addOns.classList.contains("hidden")) {
+
     // Nav button style change
-    navBtn1.classList.remove("current-page");
-    navBtn3.classList.remove("current-page");
-    navBtn4.classList.remove("current-page");
-    navBtn2.classList.add("current-page");
+    removeCurrentPageClass(navBtn2);
+    removeCurrentPageClass(navBtn3);
+    removeCurrentPageClass(navBtn4);
+    addCurrentPageClass(navBtn1);
 
     // Showing the corresponding page
-    selectPlan.classList.remove("hidden");
+    removeHiddenClass(personalInfo);
+    addHiddenClass(selectPlan);
+    addHiddenClass(addOns);
+    addHiddenClass(summary);
 
-    personalInfo.classList.add("hidden");
-    addOns.classList.add("hidden");
-    summary.classList.add("hidden");
-
+    // Hide Go Back button
+    btnBack.classList.add("hidden-btn");
+  } else if (!addOns.classList.contains("hidden")) {
+    // Going from STEP 3 to STEP 2
     // Change headings
     stepTitle.textContent = "Select your plan";
     stepSubtitle.textContent =
       "You have the option of monthly or yearly billing.";
-  } else if (!summary.classList.contains("hidden")) {
+
     // Nav button style change
-    navBtn1.classList.remove("current-page");
-    navBtn2.classList.remove("current-page");
-    navBtn4.classList.remove("current-page");
-    navBtn3.classList.add("current-page");
+    removeCurrentPageClass(navBtn1);
+    removeCurrentPageClass(navBtn3);
+    removeCurrentPageClass(navBtn4);
+    addCurrentPageClass(navBtn2);
 
     // Showing the corresponding page
-    addOns.classList.remove("hidden");
-
-    personalInfo.classList.add("hidden");
-    selectPlan.classList.add("hidden");
-    summary.classList.add("hidden");
-    confirmed.classList.add("hidden");
-
+    removeHiddenClass(selectPlan);
+    addHiddenClass(personalInfo);
+    addHiddenClass(addOns);
+    addHiddenClass(summary);
+  } else if (!summary.classList.contains("hidden")) {
+    // Going from STEP 4 to STEP 3
     // Change headings
     stepTitle.textContent = "Pick add-ons";
     stepSubtitle.textContent = "Add-ons help enhance your gaming experience.";
+
+    // Nav button style change
+    removeCurrentPageClass(navBtn1);
+    removeCurrentPageClass(navBtn2);
+    removeCurrentPageClass(navBtn4);
+    addCurrentPageClass(navBtn3);
+
+    // Showing the corresponding page
+    removeHiddenClass(addOns);
+    addHiddenClass(personalInfo);
+    addHiddenClass(selectPlan);
+    addHiddenClass(summary);
+    addHiddenClass(confirmed);
   }
 }
 // Click the Go Back Button
