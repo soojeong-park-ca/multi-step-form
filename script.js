@@ -257,14 +257,14 @@ function summaryPage() {
     removeCurrentPageClass(navBtn4);
     addCurrentPageClass(navBtn2);
 
+    stepTitle.textContent = "Select your plan";
+    stepSubtitle.textContent =
+      "You have the option of monthly or yearly billing.";
+
     removeHiddenClass(selectPlan);
     addHiddenClass(personalInfo);
     addHiddenClass(addOns);
     addHiddenClass(summary);
-
-    stepTitle.textContent = "Select your plan";
-    stepSubtitle.textContent =
-      "You have the option of monthly or yearly billing.";
   }
 
   allChangePlanBtns.forEach(btn =>
@@ -381,8 +381,6 @@ function nextStep() {
 
     // bring and apply correct data
     const [planTitleStr, planPeriodStr] = currentUserInfo.plan.split("-");
-    // const planTitleStr = currentUserInfo.plan.split("-")[0];
-    // const planPeriodStr = currentUserInfo.plan.split("-")[1];
     const planPriceNum = pricing[planPeriodStr].plan[planTitleStr];
     const currentAddOns = currentUserInfo.addOns;
 
@@ -412,10 +410,6 @@ function nextStep() {
 
     // Display different summary depending on payment term (monthly / yearly)
     // prices
-    const addOnsPriceNums = addOnTextContentArr.map(i => +i.addOnPrice);
-    const totalPriceNum =
-      +planPriceNum + addOnsPriceNums.reduce((acc, cur) => acc + cur, 0);
-
     const planTitle = document.querySelector(
       `.chosen-plan__name-title.chosen-plan__name-title--${planPeriodStr}`
     );
@@ -423,37 +417,75 @@ function nextStep() {
       `.chosen-plan__price-num.chosen-plan__price-num--${planPeriodStr}`
     );
 
+    const addOnsPriceNums = addOnTextContentArr.map(i => +i.addOnPrice);
+    const totalPriceNum =
+      +planPriceNum + addOnsPriceNums.reduce((acc, cur) => acc + cur, 0);
+
+    // text content
     planTitle.textContent = `${planTitleStr
       .slice(0, 1)
       .toUpperCase()}${planTitleStr.slice(1)}`;
     planPrice.textContent = planPriceNum;
 
-    const addOnTextContent = addOnTextContentArr
-      .map(i => {
+    function createAddOnTextContent() {
+      if (addOnTextContentArr.length > 0) {
+        return addOnTextContentArr
+          .map(i => {
+            return `
+            <div class="add-on">
+              <p class="add-on-name cool-gray-text">
+                <span class="add-on-name-title">${i.addOnTitle}</span>
+              </p>
+              <p class="add-on-price">
+                +$<span class="add-on-price-num">${i.addOnPrice}</span>/${
+              planPeriodStr === "monthly" ? "mo" : "yr"
+            }
+              </p>
+            </div>
+          `;
+          })
+          .join("");
+      } else {
         return `
           <div class="add-on">
             <p class="add-on-name cool-gray-text">
-              <span class="add-on-name-title">${i.addOnTitle}</span>
+              <span class="add-on-name-title">No add-ons selected</span>
             </p>
-            <p class="add-on-price">
-              +$<span class="add-on-price-num">${i.addOnPrice}</span>/${
-          planPeriodStr === "monthly" ? "mo" : "yr"
-        }
-            </p>
+            <button class="btn--change-addons cool-gray-text">Add</button>
           </div>
         `;
-      })
-      .join("");
+      }
+    }
 
     const addOnsContainer = document.querySelector(
       `.chosen-add-ons.chosen-add-ons--${planPeriodStr}`
     );
-    addOnsContainer.innerHTML = addOnTextContent;
+    addOnsContainer.innerHTML = createAddOnTextContent();
 
     const totalPrice = document.querySelector(
       `.total-cost__price-num.total-cost__price-num--${planPeriodStr}`
     );
     totalPrice.textContent = totalPriceNum;
+
+    // add addons btn
+    const changeAddOnsBtn = document.querySelector(".btn--change-addons");
+
+    function goToSelectAddOnsPage() {
+      removeCurrentPageClass(navBtn1);
+      removeCurrentPageClass(navBtn2);
+      removeCurrentPageClass(navBtn4);
+      addCurrentPageClass(navBtn3);
+
+      stepTitle.textContent = "Pick add-ons";
+      stepSubtitle.textContent = "Add-ons help enhance your gaming experience.";
+
+      removeHiddenClass(addOns);
+      addHiddenClass(personalInfo);
+      addHiddenClass(selectPlan);
+      addHiddenClass(summary);
+    }
+
+    changeAddOnsBtn?.addEventListener("click", goToSelectAddOnsPage);
   } else if (!summary.classList.contains("hidden")) {
     // Going from SUMMARY to CONFIRMED (thank you page)
     // remove main headings
