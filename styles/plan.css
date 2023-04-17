@@ -15,8 +15,6 @@
   flex-direction: column;
   justify-content: center;
   gap: 15px;
-
-  margin-top: 20px;
 }
 
 .form__select-plan .form__item {

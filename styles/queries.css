@@ -8,7 +8,7 @@
     padding-block: 20px;
   }
 
-  .main--content {
+  .main__content-container {
     padding: 33px 23px;
   }
   .heading-secondary {
@@ -25,4 +25,34 @@
 
 /* 660px <= screen-width */
 @media (min-width: 41.25em) {
+  #select-plan {
+    margin-top: 30px;
+  }
+  .form__select-plan--monthly,
+  .form__select-plan--yearly {
+    flex-direction: row;
+    align-items: center;
+    gap: 18px;
+  }
+  .form__select-plan .form__item {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 130px;
+  }
+  .radio-icon {
+    padding-bottom: 30px;
+  }
+
+  #add-ons {
+    margin-block: 30px 10px;
+  }
+  .custom-checkbox--monthly,
+  .custom-checkbox--yearly {
+    align-items: center;
+  }
+  .custom-checkbox {
+    width: 75%;
+  }
 }
