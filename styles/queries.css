@@ -1,10 +1,14 @@
+/* screen-width <= 275.2px */
+@media (max-width: 17.2em) {
+}
+
 /* screen-width <= 329px */
 @media (max-width: 20.6em) {
   .nav {
     padding-block: 20px;
   }
 
-  .main {
+  .main--content {
     padding: 33px 23px;
   }
   .heading-secondary {
@@ -17,4 +21,8 @@
   .input::placeholder {
     font-size: 0.85rem;
   }
+}
+
+/* 660px <= screen-width */
+@media (min-width: 41.25em) {
 }
