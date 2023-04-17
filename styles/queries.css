@@ -1,0 +1,20 @@
+/* screen-width <= 329px */
+@media (max-width: 20.6em) {
+  .nav {
+    padding-block: 20px;
+  }
+
+  .main {
+    padding: 33px 23px;
+  }
+  .heading-secondary {
+    font-size: 0.95rem;
+  }
+
+  .input {
+    text-indent: 12px;
+  }
+  .input::placeholder {
+    font-size: 0.85rem;
+  }
+}

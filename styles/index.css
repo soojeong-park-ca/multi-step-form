@@ -58,6 +58,7 @@ body {
   background-color: var(--magnolia);
   background-image: url(../assets/images/bg-sidebar-mobile.svg);
   background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 /* NAVIGATION */
