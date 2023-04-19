@@ -565,3 +565,16 @@ function goBack() {
 }
 
 btnBack.addEventListener("click", goBack);
+
+/********************************************/
+/********* Changes Based On Screen Size *********/
+const btnText = document.querySelector(".btn__text");
+
+document.addEventListener("resize", function () {
+  if (window.innerWidth >= 864) {
+    // remove hidden class from step numbers, titles next to nav btns
+    btnText.classList.remove("hidden");
+  } else {
+    btnText.classList.add("hidden");
+  }
+});

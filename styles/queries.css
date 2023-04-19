@@ -79,13 +79,95 @@
 /* BIG CHANGES - towards desktop version */
 /* 864px <= screen-width */
 @media (min-width: 54em) {
-  body {
+  html {
     display: flex;
+    align-items: center;
+    justify-content: center;
 
     background: var(--magnolia);
   }
+  body {
+    width: 90vw;
+    min-height: 0;
+    height: 615px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    background: var(--white);
+    border-radius: 15px;
+
+    margin-block: 40px;
+    padding: 25px 15px;
+  }
+
   .nav {
-    height: auto;
-    background: url(../assets/images/bg-sidebar-desktop.svg);
+    height: 100%;
+    width: 180px;
+
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    background: url(../assets/images/bg-sidebar-desktop.svg) no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+
+    overflow: hidden;
+    padding-top: 30px;
+    padding-inline: 15px;
+  }
+  .nav__button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn__text {
+    display: flex;
+    flex-direction: column;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+  .btn__text--step-num {
+    font-size: 0.8rem;
+    font-weight: var(--regular-weight);
+  }
+  .btn__text--step-title {
+    font-size: 0.9rem;
+    font-weight: var(--bold-weight);
+  }
+
+  .main {
+    min-height: 0;
+    height: 100%;
+
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  .main__content-container {
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .attribution {
+    bottom: 10px;
+  }
+
+  .buttons {
+    width: 100%;
+  }
+
+  #personal-info {
+    margin-top: 40px;
+  }
+
+  #select-plan {
+    margin-top: 40px;
+  }
+  .plan-period {
+    margin-top: 30px;
   }
 }

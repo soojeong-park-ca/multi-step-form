@@ -227,23 +227,22 @@ body {
 
   font-size: 11px;
   text-align: center;
-  color: var(--cool-gray);
+  color: var(--light-gray);
 }
-.attribution a {
+.attribution a:link,
+.attribution a:visited,
+.attribution a:hover,
+.attribution a:active {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(62, 82, 163);
+  color: var(--light-gray);
 
   text-decoration: none;
 }
 
 /* FOOTER */
 .buttons {
-  /* position: fixed;
-  bottom: 0;
-  left: 0; */
-
   display: flex;
   align-items: center;
   justify-content: space-between;
