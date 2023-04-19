@@ -1,5 +1,11 @@
-/* screen-width <= 275.2px */
-@media (max-width: 17.2em) {
+/* DEFAULT SCREEN SIZE: 375PX / MOBILE-FIRST */
+
+/***** SMALLER SCREEN SIZE THAN DEFAULT *****/
+/* screen-width <= 383px */
+@media (max-width: 24em) {
+  .main__content-container {
+    padding: 30px 20px;
+  }
 }
 
 /* screen-width <= 329px */
@@ -8,9 +14,6 @@
     padding-block: 20px;
   }
 
-  .main__content-container {
-    padding: 33px 23px;
-  }
   .heading-secondary {
     font-size: 0.95rem;
   }
@@ -21,7 +24,41 @@
   .input::placeholder {
     font-size: 0.85rem;
   }
+
+  .custom-checkbox {
+    padding: 15px 10px;
+  }
+  .checkmark {
+    left: 10px;
+  }
+  .custom-checkbox__text {
+    padding-left: 35px;
+  }
+  .custom-checkbox__label-name {
+    font-size: 0.85rem;
+  }
+  .custom-checkbox__label-description {
+    font-size: 0.7rem;
+  }
 }
+/* screen-width <= 288px */
+@media (max-width: 18em) {
+  .input::placeholder {
+    font-size: 0.8rem;
+  }
+  .input__label .input__hint {
+    font-size: 0.7rem;
+  }
+
+  .chosen-plan__name {
+    padding-right: 5px;
+  }
+  .total-cost {
+    padding: 10px 0 0 0;
+  }
+}
+
+/***** BIGGER SCREEN SIZE THAN DEFAULT *****/
 
 /* 660px <= screen-width */
 @media (min-width: 41.25em) {
@@ -73,6 +110,16 @@
   .summary {
     padding: 35px;
     gap: 25px;
+  }
+  .total-cost {
+    padding: 10px 35px 0 35px;
+  }
+}
+
+/* 760px <= screen-width */
+@media (min-width: 47.5em) {
+  .form__confirmed {
+    padding-inline: 30px;
   }
 }
 
@@ -178,6 +225,10 @@
 
   #summary {
     margin-block: 40px 20px;
+  }
+
+  .form__confirmed {
+    padding-inline: 0;
   }
 }
 
