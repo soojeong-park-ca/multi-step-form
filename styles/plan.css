@@ -1,5 +1,9 @@
 /********************************************/
 /********* SELECT PLAN *********/
+#select-plan {
+  margin-top: 20px;
+}
+
 /* FORM */
 .form.form__select-plan {
   margin-top: 0;
@@ -79,7 +83,7 @@
   border-radius: 8px;
 
   padding: 5px;
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .btn--period {

@@ -1,4 +1,8 @@
 /* SUMMARY */
+#summary {
+  margin-top: 20px;
+}
+
 .summary {
   display: flex;
   flex-direction: column;
@@ -8,7 +12,6 @@
   border-radius: 8px;
 
   padding: 20px 15px;
-  margin-top: 20px;
 }
 
 .summary p,
@@ -91,9 +94,9 @@ hr {
 }
 
 /* FOOTER */
-.footer {
+/* .buttons {
   justify-content: space-between;
-}
+} */
 
 .btn-back:link,
 .btn-back:visited {

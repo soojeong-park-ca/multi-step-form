@@ -500,8 +500,8 @@ function nextStep() {
     addHiddenClass(summary);
 
     // remove all btns
-    const footer = document.querySelector(".footer");
-    footer.classList.add("hidden");
+    const buttons = document.querySelector(".buttons");
+    buttons.classList.add("hidden");
 
     // change default styles
     document.querySelector(".main").style.padding = "35px 20px";

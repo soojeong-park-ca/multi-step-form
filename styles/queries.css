@@ -25,6 +25,15 @@
 
 /* 660px <= screen-width */
 @media (min-width: 41.25em) {
+  body {
+    background-position: 0 -24%;
+    background-size: 100%;
+  }
+
+  .main__content-container {
+    width: 85vw;
+  }
+
   #select-plan {
     margin-top: 30px;
   }
@@ -54,5 +63,29 @@
   }
   .custom-checkbox {
     width: 75%;
+  }
+
+  #summary {
+    width: 80%;
+    align-self: center;
+    margin-block: 30px 20px;
+  }
+  .summary {
+    padding: 35px;
+    gap: 25px;
+  }
+}
+
+/* BIG CHANGES - towards desktop version */
+/* 864px <= screen-width */
+@media (min-width: 54em) {
+  body {
+    display: flex;
+
+    background: var(--magnolia);
+  }
+  .nav {
+    height: auto;
+    background: url(../assets/images/bg-sidebar-desktop.svg);
   }
 }
