@@ -93,11 +93,7 @@ hr {
   color: var(--purplish-blue);
 }
 
-/* FOOTER */
-/* .buttons {
-  justify-content: space-between;
-} */
-
+/* BACK / NEXT BUTTONS */
 .btn-back:link,
 .btn-back:visited {
   display: inline-block;
