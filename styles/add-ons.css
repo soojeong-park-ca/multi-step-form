@@ -29,6 +29,7 @@
   user-select: none;
   border: 1px solid var(--light-gray);
   border-radius: 8px;
+  transition: all 0.2s ease-in-out;
 
   padding: 15px;
 }
@@ -41,6 +42,10 @@
 
 .custom-checkbox.checked {
   background-color: var(--magnolia);
+  border: 1px solid var(--purplish-blue);
+}
+
+.custom-checkbox:hover {
   border: 1px solid var(--purplish-blue);
 }
 

@@ -89,7 +89,7 @@
   body {
     width: 90vw;
     min-height: 0;
-    height: 615px;
+    height: 550px;
 
     display: flex;
     flex-direction: row;
@@ -152,6 +152,7 @@
   .main__content-container {
     width: 100%;
     box-shadow: none;
+    margin-bottom: 0;
   }
 
   .attribution {
@@ -177,5 +178,147 @@
 
   #summary {
     margin-block: 40px 20px;
+  }
+}
+
+/* 1024px <= screen-width */
+@media (min-width: 64em) {
+  body {
+    width: 940px;
+    height: 600px;
+    justify-content: flex-start;
+
+    padding: 20px;
+  }
+
+  .nav {
+    width: 275px;
+    gap: 33px;
+
+    padding-top: 40px;
+    padding-inline: 30px;
+  }
+  .nav__button {
+    gap: 17px;
+  }
+  .btn--nav {
+    width: 33px;
+    height: 33px;
+    font-weight: var(--bold-weight);
+  }
+  .btn__text--step-num {
+    font-size: 0.75rem;
+  }
+  .btn__text--step-title {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
+  .main {
+    width: 400px;
+    padding-inline: 50px;
+  }
+  .heading-primary {
+    font-size: 1.95rem;
+  }
+  .heading-secondary {
+    font-size: 1rem;
+    margin-top: 9px;
+  }
+
+  .form {
+    gap: 22px;
+  }
+  .form__item {
+    gap: 7px;
+  }
+  .input__label {
+    font-size: 0.9rem;
+  }
+  .input {
+    text-indent: 16px;
+  }
+
+  .buttons {
+    padding-inline: 25px;
+  }
+  .btn--next {
+    border-radius: 8px;
+    padding: 15px 28px;
+  }
+
+  .form__select-plan--monthly,
+  .form__select-plan--yearly {
+    justify-content: space-between;
+  }
+  .form__select-plan .form__item {
+    width: 140px;
+    padding: 20px 15px;
+  }
+  .form__item-detail {
+    gap: 6px;
+  }
+  .form__item-detail--pricing {
+    font-weight: var(--regular-weight);
+  }
+  .form__item-detail--benefit {
+    font-size: 0.75rem;
+  }
+  .plan-period {
+    margin-top: 32px;
+  }
+
+  .custom-checkbox {
+    width: 100%;
+    padding: 20px 20px 20px 15px;
+  }
+  .checkmark {
+    margin-left: 7px;
+  }
+  .custom-checkbox__text {
+    padding-left: 55px;
+  }
+  .custom-checkbox__label-name {
+    font-size: 1rem;
+  }
+  .custom-checkbox__label-pricing {
+    font-weight: var(--regular-weight);
+  }
+  .custom-checkbox__label-description,
+  .custom-checkbox__label-pricing {
+    font-size: 0.93rem;
+  }
+
+  #summary {
+    width: 100%;
+  }
+  .summary {
+    padding: 25px;
+  }
+  .summary .chosen-plan__name {
+    font-size: 1rem;
+    font-weight: var(--medium-weight);
+  }
+  .total-cost {
+    margin-top: 12px;
+    padding: 10px 25px 0 25px;
+  }
+  .total-cost__price {
+    font-size: 1.2rem;
+  }
+
+  .form__confirmed {
+    padding-block: 100px 0;
+  }
+  .thank-you-icon {
+    width: 80px;
+  }
+  .heading-primary--confirmed {
+    font-size: 2rem;
+    margin-top: 30px;
+  }
+  .heading-secondary--confirmed {
+    padding-inline: 35px;
+    margin-top: 15px;
   }
 }
