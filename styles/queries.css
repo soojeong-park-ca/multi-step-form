@@ -128,6 +128,8 @@
   .btn__text {
     display: flex;
     flex-direction: column;
+    gap: 3px;
+
     color: var(--white);
     text-transform: uppercase;
   }
@@ -160,14 +162,20 @@
     width: 100%;
   }
 
-  #personal-info {
-    margin-top: 40px;
-  }
-
+  #personal-info,
   #select-plan {
     margin-top: 40px;
   }
+
   .plan-period {
     margin-top: 30px;
+  }
+
+  #add-ons {
+    margin-block: 40px 10px;
+  }
+
+  #summary {
+    margin-block: 40px 20px;
   }
 }
