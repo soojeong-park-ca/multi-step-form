@@ -502,10 +502,6 @@ function nextStep() {
     // remove all btns
     const buttons = document.querySelector(".buttons");
     buttons.classList.add("hidden");
-
-    // change default styles
-    document.querySelector(".main").style.padding = "35px 20px";
-    document.querySelector(".heading-secondary").style.margin = "0";
   }
 }
 

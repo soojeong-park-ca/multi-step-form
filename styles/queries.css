@@ -1,13 +1,6 @@
 /* DEFAULT SCREEN SIZE: 375PX / MOBILE-FIRST */
 
 /***** SMALLER SCREEN SIZE THAN DEFAULT *****/
-/* screen-width <= 383px */
-@media (max-width: 24em) {
-  .main__content-container {
-    padding: 30px 20px;
-  }
-}
-
 /* screen-width <= 329px */
 @media (max-width: 20.6em) {
   .nav {
