@@ -1,26 +1,21 @@
-# Frontend Mentor - Multi-step form solution
+# Multi-step form
 
-This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+A multi-step form website for subscription built with Vanilla JS.<br/>The website was built from scratch based on design provided by [Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ).
 
 ## Table of contents
 
 - [Overview](#overview)
-  - [The challenge](#the-challenge)
+  - [Features](#features)
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
+  - [Reflection](#reflection)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
-### The challenge
+### Features
 
 Users should be able to:
 
@@ -32,87 +27,144 @@ Users should be able to:
 - Receive form validation messages if:
   - A field has been missed
   - The email address is not formatted correctly
-  - A step is submitted, but no selection has been made
 
 ### Screenshot
 
-![](./screenshot.jpg)
+#### Mobile version:
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+<img src="./assets/images/multi-step-form-mobile-1.png" width="250"> <img src="./assets/images/multi-step-form-mobile-2.png" width="250"> <img src="./assets/images/multi-step-form-mobile-3.png" width="250"> <img src="./assets/images/multi-step-form-mobile-4.png" width="250"> <img src="./assets/images/multi-step-form-mobile-5.png" width="250">
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
+#### Desktop version:
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+<img src="./assets/images/multi-step-form-desktop-1.png" width="500"> <img src="./assets/images/multi-step-form-desktop-2.png" width="500"> <img src="./assets/images/multi-step-form-desktop-3.png" width="500"> <img src="./assets/images/multi-step-form-desktop-4.png" width="500"> <img src="./assets/images/multi-step-form-desktop-5.png" width="500">
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+### Demo Link
 
-### Links
-
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+[💻 Live Site URL](https://your-live-site-url.com)
 
 ## My process
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- HTML
+- CSS (Responsive Website, Mobile-first workflow)
+- Vanilla JavaScript
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+### Reflection
 
-### What I learned
+This was a good project to put together my CSS and Vanilla JS skills. Here are some of the main things I worked on to make this website work:
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+#### CSS
 
-To see how you can add code snippets, see below:
+- Used custom Radio inputs for selecting subscription plan so that at least one plan is always checked.
+- Custom radio inputs were made by setting the actual input elements' `opacity` to '0' and styling the `label` element.
+- Used custom checkboxe inputs for selecting add-ons to the subscription plan.
+- Custom checkboxes were made by using `::after` pseudo-elements.
+- Used media queries to build a responsive website.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+/* checkmark ✔ - nothing yet */
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* when checked, box for checkmark background changes */
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: var(--purplish-blue);
+}
+/* when checked, a white checkmark ✔ appears */
+.custom-checkbox input:checked ~ .checkmark::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: translate(-50%, -60%) rotate(45deg);
+  transition: all 0.2s;
 }
 ```
+
+#### Vanilla JS
+
+- To switch from one step to another in this multi-step subscription form, I used functions and event listeners to add and remove "hidden" classes when the next or back button is clicked.
+- I made a pricing data object to bring data from that matches with the product and add-ons the user chooses to create a summary for pricing.
+- Clicking on the next button saves user's input for each step and this data is updated when changes are made.
+- Used regular expressions to check the validity of user's full name, email address, and phone number.
+- Used toggle function to toggle between monthly plans and yearly plans and show corresponding add-ons to choose from.
+- Used DOM manipulation to show a different summary when no add-ons were chosen, so that it's easier for users to add them if they want to from the summary page.
+
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+function displayPlans(planType) {
+  const plansToHide = planType === "monthly" ? yearlyPlans : monthlyPlans;
+  const plansToShow = planType === "monthly" ? monthlyPlans : yearlyPlans;
+  const defaultPlan = plansToShow.querySelector(
+    ".form__item--plan .input-radio" // first plan out of three
+  );
+
+  btnMonthly.classList.toggle("chosen-period", planType === "monthly");
+  btnYearly.classList.toggle("chosen-period", planType === "yearly");
+  btnTogglePlans.querySelector("img").src =
+    planType === "monthly"
+      ? "../assets/images/icon-toggle-left.svg"
+      : "../assets/images/icon-toggle-right.svg";
+
+  addHiddenClass(plansToHide);
+  removeHiddenClass(plansToShow);
+
+  // remove previously checked plan and show default plan when switching to monthly/yearly plan
+  planItems.forEach(item => {
+    item.classList.remove("checked");
+  });
+  defaultPlan.closest(".form__item--plan").classList.add("checked");
+  currentUserPlan = defaultPlan;
+  currentUserInfo.plan = currentUserPlan.value;
 }
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+```js
+function createAddOnTextContent() {
+  if (addOnTextContentArr.length > 0) {
+    return addOnTextContentArr
+      .map(i => {
+        return `
+            <div class="add-on">
+              <p class="add-on-name cool-gray-text">
+                <span class="add-on-name-title">${i.addOnTitle}</span>
+              </p>
+              <p class="add-on-price">
+                +$<span class="add-on-price-num">${i.addOnPrice}</span>/${
+          planPeriodStr === "monthly" ? "mo" : "yr"
+        }
+              </p>
+            </div>
+          `;
+      })
+      .join("");
+  } else {
+    return `
+          <div class="add-on">
+            <p class="add-on-name cool-gray-text">
+              <span class="add-on-name-title">No add-ons selected</span>
+            </p>
+            <button class="btn--change-addons cool-gray-text">Add</button>
+          </div>
+        `;
+  }
+}
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
-
-### Continued development
-
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+const addOnsContainer = document.querySelector(
+  `.chosen-add-ons.chosen-add-ons--${planPeriodStr}`
+);
+addOnsContainer.innerHTML = createAddOnTextContent();
+```
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Twitter - [@codingsooj](https://www.twitter.com/codingsooj)

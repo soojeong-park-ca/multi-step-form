@@ -63,7 +63,7 @@
   border-radius: 4px;
 }
 /* checkmark ✔ - nothing yet */
-.checkmark:after {
+.checkmark::after {
   content: "";
   position: absolute;
   display: none;
@@ -74,7 +74,7 @@
   background-color: var(--purplish-blue);
 }
 /* when checked, a white checkmark ✔ appears */
-.custom-checkbox input:checked ~ .checkmark:after {
+.custom-checkbox input:checked ~ .checkmark::after {
   content: "";
   position: absolute;
   display: block;
