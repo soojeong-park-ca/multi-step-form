@@ -269,7 +269,6 @@ body {
   cursor: pointer;
 }
 
-.btn--next:hover,
 .btn--next:active {
   background-color: var(--purplish-blue);
 }
@@ -282,7 +281,6 @@ body {
   cursor: pointer;
 }
 
-.btn--back:hover,
 .btn--back:active {
   color: var(--marine-blue);
 }

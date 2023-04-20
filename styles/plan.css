@@ -34,10 +34,6 @@
   cursor: pointer;
 }
 
-.form__select-plan .form__item:hover {
-  border: 1px solid var(--purplish-blue);
-}
-
 .form__item.checked {
   background-color: var(--magnolia);
   border: 1px solid var(--purplish-blue);
@@ -102,7 +98,6 @@
   cursor: pointer;
 }
 
-.btn--period:hover,
 .btn--period:active {
   color: var(--purplish-blue);
 }
