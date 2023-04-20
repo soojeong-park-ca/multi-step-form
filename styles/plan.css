@@ -29,8 +29,13 @@
   border: 1px solid var(--light-gray);
   border-radius: 8px;
 
+  transition: all 0.2s ease-in-out;
   padding: 15px;
   cursor: pointer;
+}
+
+.form__select-plan .form__item:hover {
+  border: 1px solid var(--purplish-blue);
 }
 
 .form__item.checked {
